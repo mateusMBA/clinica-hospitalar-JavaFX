@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.n2_prog3_mateusalmeida.IVisualizaMedico">
+   <children>
+      <Label layoutX="225.0" layoutY="14.0" text="Cadastro Médico">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="8.0" layoutY="51.0" prefHeight="127.0" prefWidth="614.0">
+         <children>
+            <Label layoutX="14.0" layoutY="5.0" text="Médico">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="cbMedico" layoutX="14.0" layoutY="30.0" prefHeight="25.0" prefWidth="215.0" />
+            <Label layoutX="14.0" layoutY="61.0" text="Nome Completo">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldNomeMedico" layoutX="14.0" layoutY="89.0" prefHeight="25.0" prefWidth="215.0" />
+            <Label layoutX="243.0" layoutY="64.0" text="Data Nascimento">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dataNascimento" layoutX="241.0" layoutY="89.0" prefWidth="160.0" />
+            <Pane layoutX="419.0" layoutY="56.0" prefHeight="61.0" prefWidth="98.0">
+               <children>
+                  <RadioButton fx:id="radioBtnM" layoutX="7.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" text="M">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="radioBtnF" layoutX="49.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" text="F">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <Label layoutX="7.0" layoutY="8.0" text="Gênero">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="6.0" layoutY="384.0" prefHeight="127.0" prefWidth="614.0">
+         <children>
+            <Label layoutX="14.0" layoutY="5.0" text="Rua">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="61.0" text="Cidade">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldCidade" layoutX="14.0" layoutY="89.0" prefHeight="25.0" prefWidth="215.0" />
+            <TextField fx:id="textFieldRua" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="273.0" />
+            <Label layoutX="303.0" layoutY="5.0" text="Número">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldNumero" layoutX="303.0" layoutY="31.0" prefHeight="25.0" prefWidth="98.0" />
+            <Label layoutX="418.0" layoutY="5.0" text="Bairro">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldBairro" layoutX="418.0" layoutY="31.0" prefHeight="25.0" prefWidth="185.0" />
+            <Label layoutX="249.0" layoutY="61.0" text="Estado">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldEstado" layoutX="249.0" layoutY="89.0" prefHeight="25.0" prefWidth="152.0" />
+            <Label layoutX="418.0" layoutY="61.0" text="CEP">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldCEP" layoutX="418.0" layoutY="89.0" prefHeight="25.0" prefWidth="152.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="6.0" layoutY="511.0" prefHeight="70.0" prefWidth="614.0">
+         <children>
+            <Label layoutX="14.0" layoutY="5.0" text="Celular">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldCelular" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="120.0" />
+            <Label layoutX="151.0" layoutY="5.0" text="Telefone">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldTelefone" layoutX="151.0" layoutY="31.0" prefHeight="25.0" prefWidth="120.0" />
+            <Label layoutX="287.0" layoutY="5.0" text="Email">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldEmail" layoutX="287.0" layoutY="31.0" prefHeight="25.0" prefWidth="250.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="4.0" layoutY="599.0" prefHeight="48.0" prefWidth="614.0">
+         <children>
+            <Button fx:id="btnSalvar" layoutX="494.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Salvar" />
+            <Button fx:id="btnEditar" layoutX="377.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Editar" />
+            <Button fx:id="btnDeletar" layoutX="259.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Deletar" />
+            <Button fx:id="btnVoltar" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#switchToTelaPrincipal" prefHeight="30.0" prefWidth="110.0" text="Voltar" />
+         </children>
+      </Pane>
+      <Pane layoutX="6.0" layoutY="178.0" prefHeight="70.0" prefWidth="614.0">
+         <children>
+            <Label layoutX="284.0" layoutY="8.0" text="Setor">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldSetor" layoutX="284.0" layoutY="31.0" prefHeight="25.0" prefWidth="120.0" />
+            <Label layoutX="427.0" layoutY="8.0" text="Carga Horária">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldCargaHoraria" layoutX="427.0" layoutY="31.0" prefHeight="25.0" prefWidth="91.0" />
+            <Pane layoutX="155.0" prefHeight="61.0" prefWidth="126.0">
+               <children>
+                  <RadioButton fx:id="radioBtnSim" layoutX="7.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" text="Sim">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="radioBtnNao" layoutX="62.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" text="Não">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <Label layoutX="7.0" layoutY="8.0" text="Cirurgião">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="14.0" layoutY="8.0" text="CRM">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldCRM" layoutX="14.0" layoutY="33.0" prefHeight="25.0" prefWidth="120.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="8.0" layoutY="248.0" prefHeight="127.0" prefWidth="614.0">
+         <children>
+            <Label layoutX="14.0" layoutY="8.0" text="Especialidades">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="checkBoxCardiologia" layoutX="14.0" layoutY="37.0" mnemonicParsing="false" prefWidth="130.0" text="Cardiologia" />
+            <CheckBox fx:id="checkBoxPediatria" layoutX="14.0" layoutY="64.0" mnemonicParsing="false" prefWidth="130.0" text="Pediatria" />
+            <CheckBox fx:id="checkBoxOncologia" layoutX="14.0" layoutY="91.0" mnemonicParsing="false" prefWidth="130.0" text="Oncologia" />
+            <CheckBox fx:id="checkBoxGinecologia" layoutX="144.0" layoutY="37.0" mnemonicParsing="false" prefWidth="130.0" text="Ginecologia" />
+            <CheckBox fx:id="checkBoxGastroenterologia" layoutX="144.0" layoutY="64.0" mnemonicParsing="false" prefWidth="130.0" text="Gastroenterologia" />
+            <CheckBox fx:id="checkBoxUrologia" layoutX="144.0" layoutY="91.0" mnemonicParsing="false" prefWidth="130.0" text="Urologia" />
+            <CheckBox fx:id="checkBoxOftamologia" layoutX="274.0" layoutY="37.0" mnemonicParsing="false" prefWidth="130.0" text="Oftamologia" />
+            <CheckBox fx:id="checkBoxPsiquiatria" layoutX="274.0" layoutY="64.0" mnemonicParsing="false" prefWidth="130.0" text="Psiquiatria" />
+            <CheckBox fx:id="checkBoxReumatologia" layoutX="274.0" layoutY="91.0" mnemonicParsing="false" prefWidth="130.0" text="Reumatologia" />
+            <CheckBox fx:id="checkBoxNeurologia" layoutX="404.0" layoutY="37.0" mnemonicParsing="false" prefWidth="130.0" text="Neurologia" />
+            <CheckBox fx:id="checkBoxOrtopedia" layoutX="404.0" layoutY="64.0" mnemonicParsing="false" prefWidth="130.0" text="Ortopedia" />
+            <CheckBox fx:id="checkBoxAngiologia" layoutX="404.0" layoutY="91.0" mnemonicParsing="false" prefWidth="130.0" text="Angiologia" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

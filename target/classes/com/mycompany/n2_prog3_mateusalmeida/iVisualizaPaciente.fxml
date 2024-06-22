@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.n2_prog3_mateusalmeida.IVisualizaPaciente">
+   <children>
+      <Label layoutX="255.0" layoutY="14.0" text="Cadastro Paciente">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="8.0" layoutY="51.0" prefHeight="127.0" prefWidth="646.0">
+         <children>
+            <Label layoutX="14.0" layoutY="5.0" text="Paciente">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="61.0" text="Nome Completo">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldNomePaciente" layoutX="14.0" layoutY="89.0" prefHeight="25.0" prefWidth="215.0" />
+            <Label layoutX="243.0" layoutY="64.0" text="Data Nascimento">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dataNascimento" layoutX="241.0" layoutY="89.0" prefWidth="160.0" />
+            <Pane layoutX="419.0" layoutY="56.0" prefHeight="61.0" prefWidth="98.0">
+               <children>
+                  <RadioButton fx:id="radioBtnM" layoutX="7.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" text="M">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="radioBtnF" layoutX="49.0" layoutY="33.0" mnemonicParsing="false" prefHeight="25.0" text="F">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <Label layoutX="7.0" layoutY="8.0" text="Gênero">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="517.0" layoutY="63.0" text="Idade">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldIdade" layoutX="517.0" layoutY="91.0" prefHeight="25.0" prefWidth="98.0" />
+            <ComboBox fx:id="cbPaciente" layoutX="14.0" layoutY="31.0" onAction="#onChangeChoiceBoxPaciente" prefHeight="20.0" prefWidth="215.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="8.0" layoutY="178.0" prefHeight="127.0" prefWidth="646.0">
+         <children>
+            <Label layoutX="14.0" layoutY="5.0" text="Rua">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="61.0" text="Cidade">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldCidade" layoutX="14.0" layoutY="89.0" prefHeight="25.0" prefWidth="215.0" />
+            <TextField fx:id="textFieldRua" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="273.0" />
+            <Label layoutX="303.0" layoutY="5.0" text="Número">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldNumero" layoutX="303.0" layoutY="31.0" prefHeight="25.0" prefWidth="98.0" />
+            <Label layoutX="418.0" layoutY="5.0" text="Bairro">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldBairro" layoutX="418.0" layoutY="31.0" prefHeight="25.0" prefWidth="185.0" />
+            <Label layoutX="249.0" layoutY="61.0" text="Estado">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldEstado" layoutX="249.0" layoutY="89.0" prefHeight="25.0" prefWidth="152.0" />
+            <Label layoutX="418.0" layoutY="61.0" text="CEP">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldCEP" layoutX="418.0" layoutY="89.0" prefHeight="25.0" prefWidth="152.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="8.0" layoutY="305.0" prefHeight="70.0" prefWidth="646.0">
+         <children>
+            <Label layoutX="14.0" layoutY="5.0" text="Celular">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldCelular" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="120.0" />
+            <Label layoutX="151.0" layoutY="5.0" text="Telefone">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldTelefone" layoutX="151.0" layoutY="31.0" prefHeight="25.0" prefWidth="120.0" />
+            <Label layoutX="287.0" layoutY="5.0" text="Email">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldEmail" layoutX="287.0" layoutY="31.0" prefHeight="25.0" prefWidth="250.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="8.0" layoutY="375.0" prefHeight="167.0" prefWidth="646.0">
+         <children>
+            <Label layoutX="252.0" layoutY="53.0" text="Celular">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldRespCelular" layoutX="252.0" layoutY="79.0" prefHeight="25.0" prefWidth="120.0" />
+            <Label layoutX="389.0" layoutY="53.0" text="Telefone">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldRespTelefone" layoutX="389.0" layoutY="79.0" prefHeight="25.0" prefWidth="120.0" />
+            <Label layoutX="14.0" layoutY="52.0" text="Nome">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldRespNome" layoutX="14.0" layoutY="78.0" prefHeight="25.0" prefWidth="215.0" />
+            <Label layoutX="14.0" layoutY="-1.0" text="Responsável">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="104.0" text="Email">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldRespEmail" layoutX="14.0" layoutY="130.0" prefHeight="25.0" prefWidth="250.0" />
+            <Button fx:id="btnRespInserir" layoutX="443.0" layoutY="130.0" mnemonicParsing="false" onAction="#inserirResponsavel" prefHeight="25.0" prefWidth="75.0" text="Inserir" />
+            <Button fx:id="btnRespAlterar" layoutX="358.0" layoutY="130.0" mnemonicParsing="false" onAction="#alterarResponsavel" prefHeight="25.0" prefWidth="75.0" text="Alterar" />
+            <Button fx:id="btnRespDeletar" layoutX="275.0" layoutY="130.0" mnemonicParsing="false" onAction="#deletarResponsavel" prefHeight="25.0" prefWidth="75.0" text="Deletar" />
+            <ComboBox fx:id="cbResponsavel" layoutX="14.0" layoutY="27.0" onAction="#onChangeChoiceBoxResponsavel" prefHeight="20.0" prefWidth="215.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="6.0" layoutY="542.0" prefHeight="104.0" prefWidth="646.0">
+         <children>
+            <Label layoutX="14.0" layoutY="5.0" text="Observação">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="textAreaObs" layoutX="14.0" layoutY="28.0" prefHeight="70.0" prefWidth="572.0" />
+         </children>
+      </Pane>
+      <Button fx:id="btnSalvar" layoutX="540.0" layoutY="654.0" mnemonicParsing="false" onAction="#salvarInformacoes" prefHeight="30.0" prefWidth="110.0" text="Salvar" />
+      <Button fx:id="btnEditar" layoutX="423.0" layoutY="654.0" mnemonicParsing="false" onAction="#editarInformacoes" prefHeight="30.0" prefWidth="110.0" text="Editar" />
+      <Button fx:id="btnDeletar" layoutX="305.0" layoutY="654.0" mnemonicParsing="false" onAction="#deletarInformacoes" prefHeight="30.0" prefWidth="110.0" text="Deletar" />
+      <Button fx:id="btnHistoricoConsultas" layoutX="172.0" layoutY="654.0" mnemonicParsing="false" onAction="#switchToHistoricoConsulta" prefHeight="30.0" prefWidth="125.0" text="Histórico Consultas" />
+      <Button fx:id="btnVoltar" layoutX="22.0" layoutY="654.0" mnemonicParsing="false" onAction="#switchToTelaPrincipal" prefHeight="30.0" prefWidth="110.0" text="Voltar" />
+   </children>
+</AnchorPane>
