@@ -5,14 +5,17 @@ import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class ICadastroConsulta {
+public class ICadastroConsulta implements Initializable{
 
     @FXML
     TextField textFieldNomeMedico;
@@ -42,17 +45,33 @@ public class ICadastroConsulta {
     RadioButton radioBtnNao;
     
     @FXML
-    ChoiceBox<Medico> cbMedico;
+    ComboBox<Medico> cbMedico;
     
     @FXML
-    ChoiceBox<Paciente> cbPaciente;
-    
-    @FXML
-    ComboBox<Medico> cbMedico2;
+    ComboBox<Paciente> cbPaciente;
     
     @FXML
     private void switchToTelaPrincipal() throws IOException {
         App.setRoot("TelaPrincipal");
+    }
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        radioBtnSim.setSelected(true);
+        cbMedico.getItems().addAll(TelaPrincipal.arrayMedicos);
+        if(TelaPrincipal.arrayMedicos.size()>0){
+            cbMedico.setValue(TelaPrincipal.arrayMedicos.get(0));
+            Medico medico = TelaPrincipal.arrayMedicos.get(0);
+            textFieldNomeMedico.setText(medico.getNomeCompleto());
+            textFieldCRM.setText(String.format("%d", medico.getNumeroCRM()));
+        cbPaciente.getItems().addAll(TelaPrincipal.arrayPacientes);
+        }
+        if(TelaPrincipal.arrayPacientes.size()>0){
+            cbPaciente.setValue(TelaPrincipal.arrayPacientes.get(0));
+            Paciente paciente = TelaPrincipal.arrayPacientes.get(0);
+            textFieldNomePaciente.setText(paciente.getNomeCompleto());
+            textFieldIdade.setText(String.format("%d", paciente.getIdade()));   
+        }
     }
     
     @FXML
@@ -69,11 +88,11 @@ public class ICadastroConsulta {
             else
                 indicacaoCirurgia = false;
             ConsultaMedica consulta = new ConsultaMedica(idPaciente, idMedico,exameQueixa, diagnostico, prescricao, indicacaoCirurgia);
-            //TelaPrincipal.arrayConsultas.add(consulta);
+            TelaPrincipal.arrayConsultas.add(consulta);
             //Insere a nova consulta no historico de consultas do paciente
-            //Paciente.findById(TelaPrincipal.arrayPacientes, idPaciente).getHistoricoConsultasMedicas().add(consulta);
+            Paciente.findById(TelaPrincipal.arrayPacientes, idPaciente).getHistoricoConsultasMedicas().add(consulta);
             //javax.swing.JOptionPane.showMessageDialog(null, "Consulta cadastrada com sucesso"); ALERTA
-            resetarCampos();
+            limparCampos();
         }catch(NumberFormatException e){
             //javax.swing.JOptionPane.showMessageDialog(null, "Preencha os campos corretamente"); ALERTA
         }catch(Exception e){
@@ -82,11 +101,53 @@ public class ICadastroConsulta {
     }
     
     @FXML
-    private void resetarCampos() throws IOException {
+    private void limparCampos() throws IOException {
         textFieldQueixa.setText("");
         textAreaDiagnostico.setText("");
         textAreaPrescricao.setText("");
         radioBtnSim.setSelected(true);
         radioBtnSim.setSelected(false);
+    }
+    
+    @FXML
+    private void onChangeComboboxPaciente() throws IOException{
+        int id = cbPaciente.getSelectionModel().getSelectedIndex();
+        Paciente paciente;
+        if(id < 0)
+          id = 0;
+        if(TelaPrincipal.arrayPacientes.size()> 0){
+            paciente = (TelaPrincipal.arrayPacientes.get(id));
+            textFieldNomePaciente.setText(paciente.getNomeCompleto());
+            textFieldIdade.setText(String.format("%d",paciente.getIdade()));
+        }
+    }
+    
+    @FXML
+    private void onChangeComboboxMedico() throws IOException{
+        int id = cbMedico.getSelectionModel().getSelectedIndex();
+        Medico medico;
+        if(id < 0)
+          id = 0;
+        if(TelaPrincipal.arrayMedicos.size()> 0){
+            medico = (TelaPrincipal.arrayMedicos.get(id));
+            textFieldNomeMedico.setText(medico.getNomeCompleto());
+            textFieldCRM.setText(String.format("%d",medico.getNumeroCRM()));
+        }
+    }
+    
+    @FXML
+    private void selecionarCirurgiaNao() throws IOException{
+        if(radioBtnNao.isSelected())
+            radioBtnSim.setSelected(false);
+        else
+            radioBtnSim.setSelected(true);
+    }
+    
+    @FXML
+    private void selecionarCirurgiaSim() throws IOException{
+        if(radioBtnSim.isSelected())
+            radioBtnNao.setSelected(false);
+        else
+            radioBtnNao.setSelected(true);
     }
 }

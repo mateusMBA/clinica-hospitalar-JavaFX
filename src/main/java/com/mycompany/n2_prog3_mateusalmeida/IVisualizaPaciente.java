@@ -309,7 +309,6 @@ public class IVisualizaPaciente implements Initializable{
             ObservableList<Paciente> pacientes = FXCollections.observableArrayList(TelaPrincipal.arrayPacientes);
             cbPaciente.setItems(pacientes);
             cbPaciente.setValue(TelaPrincipal.arrayPacientes.get(0));
-            //preencherInformacoes(TelaPrincipal.arrayPacientes.get(0));
         }else{
             limparCampos();
             cbPaciente.setItems(null);

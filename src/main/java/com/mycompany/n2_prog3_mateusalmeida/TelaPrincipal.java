@@ -1,6 +1,7 @@
  package com.mycompany.n2_prog3_mateusalmeida;
 
 import com.mycompany.n2_prog3_mateusalmeida.App;
+import com.mycompany.n2_prog3_mateusalmeida.dados.ImportarExcel;
 import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.Enfermeiro;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
@@ -55,5 +56,10 @@ public class TelaPrincipal {
     @FXML
     private void switchToEditarConsulta() throws IOException {
         App.setRoot("iVisualizaConsulta");
+    }
+    
+    @FXML
+    private void importarExcel() throws IOException{
+        ImportarExcel.lerExcel();
     }
 }
