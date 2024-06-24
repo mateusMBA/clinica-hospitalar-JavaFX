@@ -1,5 +1,4 @@
 module com.mycompany.n2_prog3_mateusalmeida {
-    exports com.mycompany.n2_prog3_mateusalmeida.models;
     requires javafx.controls;
     requires javafx.fxml;
     opens com.mycompany.n2_prog3_mateusalmeida to javafx.fxml;

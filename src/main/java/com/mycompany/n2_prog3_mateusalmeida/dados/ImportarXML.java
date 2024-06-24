@@ -8,11 +8,8 @@ import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipal;
 import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.Enfermeiro;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
-import com.mycompany.n2_prog3_mateusalmeida.models.XMLPacientes;
+import com.mycompany.n2_prog3_mateusalmeida.models.XMLParser;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
-import com.mycompany.n2_prog3_mateusalmeida.models.XMLConsultas;
-import com.mycompany.n2_prog3_mateusalmeida.models.XMLEnfermeiros;
-import com.mycompany.n2_prog3_mateusalmeida.models.XMLMedicos;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -29,34 +26,25 @@ public class ImportarXML {
     
     public static void importarXML(){
         
+        TelaPrincipal.arrayConsultas = new ArrayList<>();
+        TelaPrincipal.arrayMedicos = new ArrayList<>();
         TelaPrincipal.arrayPacientes = new ArrayList<>();
+        TelaPrincipal.arrayEnfermeiros = new ArrayList<>();
         
         try{
-        JAXBContext jaxbContextPaciente = JAXBContext.newInstance(XMLPacientes.class);
-        Unmarshaller unMarshallerPaciente = jaxbContextPaciente.createUnmarshaller();
-        XMLPacientes pacientes = (XMLPacientes)unMarshallerPaciente.unmarshal(new FileReader("C:/Users/mateu/Desktop/Estudos/Femass/Prog 3/N2_Prog3_MateusAlmeida/src/main/java/com/mycompany/n2_prog3_mateusalmeida/dados/Pacientes.xml"));
-        for(Paciente paciente : pacientes.getPacientes()){
+        JAXBContext jaxbContextDados = JAXBContext.newInstance(XMLParser.class);
+        Unmarshaller unMarshallerPaciente = jaxbContextDados.createUnmarshaller();
+        XMLParser dados = (XMLParser)unMarshallerPaciente.unmarshal(new FileReader("C:/Users/mateu/Desktop/Estudos/Femass/Prog 3/N2_Prog3_MateusAlmeida/src/main/java/com/mycompany/n2_prog3_mateusalmeida/dados/DadosClinicaHospitalar.xml"));
+        for(Paciente paciente : dados.getPacientes()){
             TelaPrincipal.arrayPacientes.add(paciente);
         }
-        
-        JAXBContext jaxbContextMedico = JAXBContext.newInstance(XMLMedicos.class);
-        Unmarshaller unMarshallerMedico = jaxbContextMedico.createUnmarshaller();
-        XMLMedicos medicos = (XMLMedicos)unMarshallerMedico.unmarshal(new FileReader("C:/Users/mateu/Desktop/Estudos/Femass/Prog 3/N2_Prog3_MateusAlmeida/src/main/java/com/mycompany/n2_prog3_mateusalmeida/dados/Medicos.xml"));
-        for(Medico medico : medicos.getMedicos()){
+        for(Medico medico : dados.getMedicos()){
             TelaPrincipal.arrayMedicos.add(medico);
         }
-        
-        JAXBContext jaxbContextEnfermeiro = JAXBContext.newInstance(XMLEnfermeiros.class);
-        Unmarshaller unMarshallerEnfermeiro = jaxbContextEnfermeiro.createUnmarshaller();
-        XMLEnfermeiros enfermeiros = (XMLEnfermeiros)unMarshallerEnfermeiro.unmarshal(new FileReader("C:/Users/mateu/Desktop/Estudos/Femass/Prog 3/N2_Prog3_MateusAlmeida/src/main/java/com/mycompany/n2_prog3_mateusalmeida/dados/Enfermeiros.xml"));
-        for(Enfermeiro enfermeiro : enfermeiros.getEnfermeiros()){
+        for(Enfermeiro enfermeiro : dados.getEnfermeiros()){
             TelaPrincipal.arrayEnfermeiros.add(enfermeiro);
         }
-        
-        JAXBContext jaxbContextConsulta = JAXBContext.newInstance(XMLConsultas.class);
-        Unmarshaller unMarshallerConsulta = jaxbContextConsulta.createUnmarshaller();
-        XMLConsultas consultas = (XMLConsultas)unMarshallerConsulta.unmarshal(new FileReader("C:/Users/mateu/Desktop/Estudos/Femass/Prog 3/N2_Prog3_MateusAlmeida/src/main/java/com/mycompany/n2_prog3_mateusalmeida/dados/Consultas.xml"));
-        for(ConsultaMedica consulta : consultas.getConsultas()){
+        for(ConsultaMedica consulta : dados.getConsultas()){
             TelaPrincipal.arrayConsultas.add(consulta);
         }
         }catch(Exception ex){
