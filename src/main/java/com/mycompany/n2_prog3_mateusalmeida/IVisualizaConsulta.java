@@ -81,9 +81,17 @@ public class IVisualizaConsulta implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cbConsulta.getItems().addAll(TelaPrincipal.arrayConsultas);
+        cbMedico.getItems().addAll(TelaPrincipal.arrayMedicos);
+        cbPaciente.getItems().addAll(TelaPrincipal.arrayPacientes);
         if(TelaPrincipal.arrayConsultas.size()>0){
             cbConsulta.setValue(TelaPrincipal.arrayConsultas.get(0));
             preencherInformacoes(TelaPrincipal.arrayConsultas.get(0));
+            Paciente paciente = TelaPrincipal.arrayPacientes.get(cbPaciente.getSelectionModel().getSelectedIndex());
+            textFieldNomePaciente.setText(paciente.getNomeCompleto());
+            textFieldIdade.setText(String.format("%d", paciente.getIdade()));
+            Medico medico = TelaPrincipal.arrayMedicos.get(cbMedico.getSelectionModel().getSelectedIndex());
+            textFieldNomeMedico.setText(medico.getNomeCompleto());
+            textFieldCRM.setText(String.format("%d", medico.getNumeroCRM()));
         }else{
             btnDeletar.setDisable(true);
         }
@@ -97,6 +105,12 @@ public class IVisualizaConsulta implements Initializable{
         textAreaPrescricao.setText("");
         radioBtnSim.setSelected(true);
         radioBtnSim.setSelected(false);
+        textFieldCRM.setText("");
+        textFieldIdade.setText("");
+        textFieldNomeMedico.setText("");
+        textFieldNomePaciente.setText("");
+        cbPaciente.setValue(null);
+        cbMedico.setValue(null);
     }
     
     @FXML
@@ -153,8 +167,8 @@ public class IVisualizaConsulta implements Initializable{
                 cbConsulta.setValue(TelaPrincipal.arrayConsultas.get(0));
             //JOptionPane.showMessageDialog(null, "Consulta deletada com sucesso");
             }else{
-                limparCampos();
                 cbConsulta.setItems(null);
+                limparCampos();
                 btnDeletar.setDisable(true);
             }
         }         
@@ -177,6 +191,10 @@ public class IVisualizaConsulta implements Initializable{
     private void bloquearBotoes(){
         cbMedico.setDisable(true);
         cbPaciente.setDisable(true);
+        textFieldNomeMedico.setDisable(true);
+        textFieldNomePaciente.setDisable(true);
+        textFieldCRM.setDisable(true);
+        textFieldIdade.setDisable(true);
         textAreaDiagnostico.setDisable(true);
         textAreaPrescricao.setDisable(true);
         textFieldQueixa.setDisable(true);
@@ -199,7 +217,7 @@ public class IVisualizaConsulta implements Initializable{
         int id = cbConsulta.getSelectionModel().getSelectedIndex();
         if(id < 0)
           id = 0;
-        if(TelaPrincipal.arrayEnfermeiros.size()> 0){
+        if(TelaPrincipal.arrayConsultas.size()> 0){
             preencherInformacoes(TelaPrincipal.arrayConsultas.get(id));
         }
         else{

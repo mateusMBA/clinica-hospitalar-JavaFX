@@ -15,9 +15,9 @@ import java.util.Iterator;
  */
 public class ConsultaMedica {
     private static long geradorID = 1;
-    private Long idConsulta;
-    private Long idPaciente;
-    private Long idMedico;
+    private long idPaciente;
+    private long idConsulta;
+    private long idMedico;
     private String exameQueixa;
     private String diagnostico;
     private String prescricao;
@@ -25,19 +25,19 @@ public class ConsultaMedica {
 
     public ConsultaMedica() {
     }
-    
-    public ConsultaMedica( Long idPaciente, Long idMedico, String exameQueixa, String diagnostico, String prescricao, boolean indicacaoCirurgica) {
+      
+    public ConsultaMedica(long idPaciente, long idMedico, String exameQueixa, String diagnostico, String prescricao, boolean indicacaoCirurgica) {
         this.idPaciente = idPaciente;
         this.idMedico = idMedico;
         this.exameQueixa = exameQueixa;
         this.diagnostico = diagnostico;
         this.prescricao = prescricao;
         this.indicacaoCirurgica = indicacaoCirurgica;
-        this.idConsulta = geradorID;
+        this.idConsulta = this.geradorID;
         geradorID++;
     }
-
-    public ConsultaMedica(Long idConsulta, Long idPaciente, Long idMedico, String exameQueixa, String diagnostico, String prescricao, boolean indicacaoCirurgica) {
+    
+    public ConsultaMedica(long idConsulta, long idPaciente, long idMedico, String exameQueixa, String diagnostico, String prescricao, boolean indicacaoCirurgica) {
         this.idConsulta = idConsulta;
         this.idPaciente = idPaciente;
         this.idMedico = idMedico;
@@ -47,27 +47,31 @@ public class ConsultaMedica {
         this.indicacaoCirurgica = indicacaoCirurgica;
         geradorID = idConsulta + 1;
     }
+
     
     
-    
-    public Long getIdConsulta() {
+    public long getIdConsulta() {
         return idConsulta;
     }
 
-    public Long getIdPaciente() {
+    public void setIdConsulta(long idConsulta) {
+        this.idConsulta = idConsulta;
+    }
+    
+    public long getIdPaciente() {
         return idPaciente;
     }
 
-    public void setIdPaciente(Long idPaciente) {
+    public void setIdPaciente(long idPaciente) {
         this.idPaciente = idPaciente;
     }
 
-    public void setIdMedico(Long idMedico) {
+    public void setIdMedico(long idMedico) {
         this.idMedico = idMedico;
     }
     
 
-    public Long getIdMedico() {
+    public long getIdMedico() {
         return idMedico;
     }
 

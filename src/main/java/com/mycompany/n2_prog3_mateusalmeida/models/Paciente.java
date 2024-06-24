@@ -50,7 +50,7 @@ public class Paciente extends DadoPessoal{
     public long getIdPaciente() {
         return idPaciente;
     }
-
+    
     public void setIdPaciente(long idPaciente) {
         this.idPaciente = idPaciente;
     }

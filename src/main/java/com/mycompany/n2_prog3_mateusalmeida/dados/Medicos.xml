@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<medicos>
+    <medico>
+        <contato>
+            <celular>618615</celular>
+            <email>eu@eu.com</email>
+            <telefone>651383581</telefone>
+        </contato>
+        <dataNascimento>1997-04-14T00:00:00-03:00</dataNascimento>
+        <endereco>
+            <bairro>teste</bairro>
+            <cep>654168</cep>
+            <cidade>cidade</cidade>
+            <estado>estado</estado>
+            <numero>4862</numero>
+            <rua>rua</rua>
+        </endereco>
+        <genero>F</genero>
+        <nomeCompleto>Medico 1</nomeCompleto>
+        <chSemanal>44</chSemanal>
+        <setor>Teste</setor>
+        <areasEspecialidade>Cardiologia</areasEspecialidade>
+        <areasEspecialidade>Neurologia</areasEspecialidade>
+        <areasEspecialidade>Oncologia</areasEspecialidade>
+        <cirurgiao>true</cirurgiao>
+        <idMedico>1</idMedico>
+        <numeroCRM>4862</numeroCRM>
+    </medico>
+    <medico>
+        <contato>
+            <celular>554198196</celular>
+            <email>email@email.com</email>
+            <telefone>551681683</telefone>
+        </contato>
+        <dataNascimento>1999-09-14T00:00:00-03:00</dataNascimento>
+        <endereco>
+            <bairro>teste</bairro>
+            <cep>5166185</cep>
+            <cidade>teste</cidade>
+            <estado>teste</estado>
+            <numero>6185</numero>
+            <rua>teste</rua>
+        </endereco>
+        <genero>M</genero>
+        <nomeCompleto>Medico 2</nomeCompleto>
+        <chSemanal>20</chSemanal>
+        <setor>Residencia</setor>
+        <areasEspecialidade>Ginecologia</areasEspecialidade>
+        <cirurgiao>true</cirurgiao>
+        <idMedico>2</idMedico>
+        <numeroCRM>6185</numeroCRM>
+    </medico>
+    <medico>
+        <contato>
+            <celular>55196816</celular>
+            <email>email@email.com</email>
+            <telefone>55168416</telefone>
+        </contato>
+        <dataNascimento>1985-04-03T00:00:00-03:00</dataNascimento>
+        <endereco>
+            <bairro>teste bairro</bairro>
+            <cep>115684</cep>
+            <cidade>teste cidade</cidade>
+            <estado>teste estado</estado>
+            <numero>12</numero>
+            <rua>teste rua</rua>
+        </endereco>
+        <genero>F</genero>
+        <nomeCompleto>Medico 3</nomeCompleto>
+        <chSemanal>44</chSemanal>
+        <setor>Pediatria</setor>
+        <areasEspecialidade>Pediatria</areasEspecialidade>
+        <areasEspecialidade>Ortopedia</areasEspecialidade>
+        <cirurgiao>false</cirurgiao>
+        <idMedico>3</idMedico>
+        <numeroCRM>12</numeroCRM>
+    </medico>
+    <medico>
+        <contato>
+            <celular>5124532</celular>
+            <email>teste@teste.com</email>
+            <telefone>1235341</telefone>
+        </contato>
+        <dataNascimento>1991-07-07T00:00:00-03:00</dataNascimento>
+        <endereco>
+            <bairro>teste</bairro>
+            <cep>55554235</cep>
+            <cidade>teste</cidade>
+            <estado>teste</estado>
+            <numero>124</numero>
+            <rua>teste</rua>
+        </endereco>
+        <genero>M</genero>
+        <nomeCompleto>Medico 4</nomeCompleto>
+        <chSemanal>30</chSemanal>
+        <setor>Teste</setor>
+        <areasEspecialidade>Neurologia</areasEspecialidade>
+        <areasEspecialidade>Psiquiatria</areasEspecialidade>
+        <cirurgiao>false</cirurgiao>
+        <idMedico>4</idMedico>
+        <numeroCRM>124</numeroCRM>
+    </medico>
+</medicos>

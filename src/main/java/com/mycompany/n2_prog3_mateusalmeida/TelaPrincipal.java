@@ -1,7 +1,12 @@
  package com.mycompany.n2_prog3_mateusalmeida;
 
 import com.mycompany.n2_prog3_mateusalmeida.App;
+import com.mycompany.n2_prog3_mateusalmeida.dados.ExportarExcel;
+import com.mycompany.n2_prog3_mateusalmeida.dados.ExportarJSON;
+import com.mycompany.n2_prog3_mateusalmeida.dados.ExportarXML;
 import com.mycompany.n2_prog3_mateusalmeida.dados.ImportarExcel;
+import com.mycompany.n2_prog3_mateusalmeida.dados.ImportarJSON;
+import com.mycompany.n2_prog3_mateusalmeida.dados.ImportarXML;
 import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.Enfermeiro;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
@@ -61,5 +66,30 @@ public class TelaPrincipal {
     @FXML
     private void importarExcel() throws IOException{
         ImportarExcel.lerExcel();
+    }
+    
+    @FXML
+    private void exportarExcel() throws IOException{
+        ExportarExcel.escreverExcel();
+    }
+    
+    @FXML
+    private void exportarJSON() throws IOException{
+        ExportarJSON.exportarXML();
+    }
+    
+    @FXML
+    private void importarJSON() throws IOException{
+        ImportarJSON.importarJSON();
+    }
+    
+    @FXML
+    private void exportarXML() throws IOException{
+        ExportarXML.exportarXML();
+    }
+    
+    @FXML
+    private void importarXML() throws IOException{
+        ImportarXML.importarXML();
     }
 }

@@ -34,6 +34,8 @@ import javafx.scene.control.TextField;
  */
 public class IVisualizaPaciente implements Initializable{
     
+    public static int idPaciente;
+    
     @FXML
     TextField textFieldNomePaciente;
     
@@ -120,6 +122,7 @@ public class IVisualizaPaciente implements Initializable{
         cbPaciente.getItems().addAll(TelaPrincipal.arrayPacientes);
         if(TelaPrincipal.arrayPacientes.size()>0){
             cbPaciente.setValue(TelaPrincipal.arrayPacientes.get(0));
+            this.idPaciente = cbPaciente.getSelectionModel().getSelectedIndex();
             preencherInformacoes(TelaPrincipal.arrayPacientes.get(0));
             cbResponsavel.getItems().addAll(TelaPrincipal.arrayPacientes.get(0).getContatoResponsavel());
             if(TelaPrincipal.arrayPacientes.get(0).getContatoResponsavel().size() > 0){
@@ -320,6 +323,7 @@ public class IVisualizaPaciente implements Initializable{
         int id = cbPaciente.getSelectionModel().getSelectedIndex();
         if(id < 0)
           id = 0;
+        this.idPaciente = id;
         if(TelaPrincipal.arrayPacientes.size()> 0){
             preencherInformacoes(TelaPrincipal.arrayPacientes.get(id));
             ObservableList<Responsavel> responsaveis = FXCollections.observableArrayList(TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel());

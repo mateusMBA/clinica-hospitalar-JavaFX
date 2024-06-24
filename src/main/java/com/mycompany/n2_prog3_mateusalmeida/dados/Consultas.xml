@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<consultas>
+    <consulta>
+        <diagnostico>Nada</diagnostico>
+        <exameQueixa>Dor</exameQueixa>
+        <idConsulta>1</idConsulta>
+        <idMedico>1</idMedico>
+        <idPaciente>1</idPaciente>
+        <indicacaoCirurgica>false</indicacaoCirurgica>
+        <prescricao>Nada</prescricao>
+    </consulta>
+    <consulta>
+        <diagnostico>Virose</diagnostico>
+        <exameQueixa>Dor</exameQueixa>
+        <idConsulta>2</idConsulta>
+        <idMedico>1</idMedico>
+        <idPaciente>1</idPaciente>
+        <indicacaoCirurgica>false</indicacaoCirurgica>
+        <prescricao>Dorflex</prescricao>
+    </consulta>
+    <consulta>
+        <diagnostico>Dengue</diagnostico>
+        <exameQueixa>Dor</exameQueixa>
+        <idConsulta>3</idConsulta>
+        <idMedico>3</idMedico>
+        <idPaciente>1</idPaciente>
+        <indicacaoCirurgica>false</indicacaoCirurgica>
+        <prescricao>Descanso e Dipirona</prescricao>
+    </consulta>
+    <consulta>
+        <diagnostico>Tendinite</diagnostico>
+        <exameQueixa>Dor no Braço</exameQueixa>
+        <idConsulta>4</idConsulta>
+        <idMedico>2</idMedico>
+        <idPaciente>2</idPaciente>
+        <indicacaoCirurgica>true</indicacaoCirurgica>
+        <prescricao>Fisioterapia ou Cirurgia</prescricao>
+    </consulta>
+    <consulta>
+        <diagnostico>Fratura</diagnostico>
+        <exameQueixa>Dor no Braço</exameQueixa>
+        <idConsulta>5</idConsulta>
+        <idMedico>3</idMedico>
+        <idPaciente>2</idPaciente>
+        <indicacaoCirurgica>true</indicacaoCirurgica>
+        <prescricao>Fisioterapia ou Cirurgia</prescricao>
+    </consulta>
+    <consulta>
+        <diagnostico>Fratura</diagnostico>
+        <exameQueixa>Dor no Braço</exameQueixa>
+        <idConsulta>6</idConsulta>
+        <idMedico>4</idMedico>
+        <idPaciente>2</idPaciente>
+        <indicacaoCirurgica>true</indicacaoCirurgica>
+        <prescricao>Fisioterapia ou Cirurgia</prescricao>
+    </consulta>
+    <consulta>
+        <diagnostico>Virose</diagnostico>
+        <exameQueixa>Nausea</exameQueixa>
+        <idConsulta>7</idConsulta>
+        <idMedico>1</idMedico>
+        <idPaciente>3</idPaciente>
+        <indicacaoCirurgica>false</indicacaoCirurgica>
+        <prescricao>Teste</prescricao>
+    </consulta>
+    <consulta>
+        <diagnostico>Dengue</diagnostico>
+        <exameQueixa>Nausea</exameQueixa>
+        <idConsulta>8</idConsulta>
+        <idMedico>2</idMedico>
+        <idPaciente>3</idPaciente>
+        <indicacaoCirurgica>false</indicacaoCirurgica>
+        <prescricao>Respouso</prescricao>
+    </consulta>
+    <consulta>
+        <diagnostico>Nao sei</diagnostico>
+        <exameQueixa>Febre</exameQueixa>
+        <idConsulta>9</idConsulta>
+        <idMedico>2</idMedico>
+        <idPaciente>3</idPaciente>
+        <indicacaoCirurgica>false</indicacaoCirurgica>
+        <prescricao>Anti inflamatório</prescricao>
+    </consulta>
+    <consulta>
+        <diagnostico>Virose</diagnostico>
+        <exameQueixa>Febre</exameQueixa>
+        <idConsulta>10</idConsulta>
+        <idMedico>1</idMedico>
+        <idPaciente>4</idPaciente>
+        <indicacaoCirurgica>false</indicacaoCirurgica>
+        <prescricao>Nada</prescricao>
+    </consulta>
+</consultas>

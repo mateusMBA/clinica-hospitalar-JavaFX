@@ -5,6 +5,7 @@
 package com.mycompany.n2_prog3_mateusalmeida;
 
 import com.mycompany.n2_prog3_mateusalmeida.App;
+import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.ContatoTelEmail;
 import com.mycompany.n2_prog3_mateusalmeida.models.Endereco;
 import com.mycompany.n2_prog3_mateusalmeida.models.Genero;
@@ -341,7 +342,9 @@ public class IVisualizaMedico implements Initializable{
         //deletar o medico selecionado da base e preencher o combobox com os remanescentes
         if(TelaPrincipal.arrayMedicos.size() > 0){
             int id = cbMedico.getSelectionModel().getSelectedIndex();
+            long idMedico = TelaPrincipal.arrayMedicos.get(id).getIdMedico();
             TelaPrincipal.arrayMedicos.remove(id);
+            ConsultaMedica.removerConsultaPorIdMedico(TelaPrincipal.arrayConsultas, idMedico);
             //JOptionPane.showMessageDialog(null, "Medico deletado com sucesso");
         }
         if(TelaPrincipal.arrayMedicos.size() != 0){
