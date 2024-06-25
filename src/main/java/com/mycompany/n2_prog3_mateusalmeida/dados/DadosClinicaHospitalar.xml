@@ -240,7 +240,7 @@
             <email>teste1@email.com</email>
             <telefone>552756846</telefone>
         </contato>
-        <dataNascimento>2009-01-21T00:00:00-02:00</dataNascimento>
+        <dataNascimento>2009-01-20T22:00:00-02:00</dataNascimento>
         <endereco>
             <bairro>Teste Bairro 1</bairro>
             <cep>51646</cep>
@@ -250,7 +250,7 @@
             <rua>Teste Rua 1</rua>
         </endereco>
         <genero>F</genero>
-        <nomeCompleto>Teste Paciente 1</nomeCompleto>
+        <nomeCompleto>Teste Paciente ExecXML</nomeCompleto>
         <contatoResponsavel>
             <celular>5527351816</celular>
             <email>testeResp@email.com</email>

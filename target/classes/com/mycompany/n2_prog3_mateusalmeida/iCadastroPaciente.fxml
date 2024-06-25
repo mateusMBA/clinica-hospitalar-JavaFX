@@ -50,12 +50,6 @@
                   </Label>
                </children>
             </Pane>
-            <Label layoutX="499.0" layoutY="8.0" text="Idade">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="textFieldIdade" layoutX="499.0" layoutY="35.0" prefHeight="25.0" prefWidth="98.0" />
          </children>
       </Pane>
       <Pane layoutX="8.0" layoutY="121.0" prefHeight="127.0" prefWidth="626.0">

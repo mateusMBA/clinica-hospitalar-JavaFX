@@ -38,8 +38,6 @@ public class ICadastroPacienteController implements Initializable{
     @FXML
     DatePicker dataNascimento;
     
-    @FXML
-    TextField textFieldIdade;
     
     @FXML
     TextField textFieldRua;

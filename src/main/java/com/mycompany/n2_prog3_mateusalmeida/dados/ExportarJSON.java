@@ -28,13 +28,9 @@ public class ExportarJSON {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         
         JSONArray pacientesArray = new JSONArray();
-        JSONObject pacientesObj = new JSONObject();
         JSONArray medicosArray = new JSONArray();
-        JSONObject medicosObj = new JSONObject();
         JSONArray enfermeirosArray = new JSONArray();
-        JSONObject enfermeirosObj = new JSONObject();
         JSONArray consultasArray = new JSONArray();
-        JSONObject consultasObj = new JSONObject();
         
         
         
