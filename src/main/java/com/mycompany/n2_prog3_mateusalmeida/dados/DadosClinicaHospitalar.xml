@@ -29,7 +29,7 @@
     </consultas>
     <consultas>
         <diagnostico>Tendinite</diagnostico>
-        <exameQueixa>Dor no Braço</exameQueixa>
+        <exameQueixa>Dor no Braï¿½o</exameQueixa>
         <idConsulta>4</idConsulta>
         <idMedico>2</idMedico>
         <idPaciente>2</idPaciente>
@@ -38,7 +38,7 @@
     </consultas>
     <consultas>
         <diagnostico>Fratura</diagnostico>
-        <exameQueixa>Dor no Braço</exameQueixa>
+        <exameQueixa>Dor no Braï¿½o</exameQueixa>
         <idConsulta>5</idConsulta>
         <idMedico>3</idMedico>
         <idPaciente>2</idPaciente>
@@ -47,7 +47,7 @@
     </consultas>
     <consultas>
         <diagnostico>Fratura</diagnostico>
-        <exameQueixa>Dor no Braço</exameQueixa>
+        <exameQueixa>Dor no Braï¿½o</exameQueixa>
         <idConsulta>6</idConsulta>
         <idMedico>4</idMedico>
         <idPaciente>2</idPaciente>
@@ -79,7 +79,7 @@
         <idMedico>2</idMedico>
         <idPaciente>3</idPaciente>
         <indicacaoCirurgica>false</indicacaoCirurgica>
-        <prescricao>Anti inflamatório</prescricao>
+        <prescricao>Anti inflamatï¿½rio</prescricao>
     </consultas>
     <consultas>
         <diagnostico>Virose</diagnostico>
@@ -96,7 +96,7 @@
             <email>enf@enf.com</email>
             <telefone>5551986816</telefone>
         </contato>
-        <dataNascimento>2000-12-31T00:00:00-02:00</dataNascimento>
+        <dataNascimento>2001-05-08T00:00:00-03:00</dataNascimento>
         <endereco>
             <bairro>teste</bairro>
             <cep>68546</cep>
@@ -118,7 +118,7 @@
             <email>email@email.com</email>
             <telefone>55132168</telefone>
         </contato>
-        <dataNascimento>1999-12-26T00:00:00-02:00</dataNascimento>
+        <dataNascimento>2000-12-25T00:00:00-02:00</dataNascimento>
         <endereco>
             <bairro>bairro4</bairro>
             <cep>351861</cep>
@@ -140,7 +140,7 @@
             <email>eu@eu.com</email>
             <telefone>651383581</telefone>
         </contato>
-        <dataNascimento>1996-12-29T00:00:00-02:00</dataNascimento>
+        <dataNascimento>1997-04-14T00:00:00-03:00</dataNascimento>
         <endereco>
             <bairro>teste</bairro>
             <cep>654168</cep>
@@ -166,7 +166,7 @@
             <email>email@email.com</email>
             <telefone>551681683</telefone>
         </contato>
-        <dataNascimento>1998-12-27T00:00:00-02:00</dataNascimento>
+        <dataNascimento>1999-09-14T00:00:00-03:00</dataNascimento>
         <endereco>
             <bairro>teste</bairro>
             <cep>5166185</cep>
@@ -190,7 +190,7 @@
             <email>email@email.com</email>
             <telefone>55168416</telefone>
         </contato>
-        <dataNascimento>1984-12-30T00:00:00-03:00</dataNascimento>
+        <dataNascimento>1985-04-03T00:00:00-03:00</dataNascimento>
         <endereco>
             <bairro>teste bairro</bairro>
             <cep>115684</cep>
@@ -215,7 +215,7 @@
             <email>teste@teste.com</email>
             <telefone>1235341</telefone>
         </contato>
-        <dataNascimento>1990-12-30T00:00:00-02:00</dataNascimento>
+        <dataNascimento>1991-07-07T00:00:00-03:00</dataNascimento>
         <endereco>
             <bairro>teste</bairro>
             <cep>55554235</cep>
@@ -240,7 +240,7 @@
             <email>teste1@email.com</email>
             <telefone>552756846</telefone>
         </contato>
-        <dataNascimento>2008-12-28T00:00:00-02:00</dataNascimento>
+        <dataNascimento>2009-01-21T00:00:00-02:00</dataNascimento>
         <endereco>
             <bairro>Teste Bairro 1</bairro>
             <cep>51646</cep>
@@ -265,7 +265,7 @@
             <idResponsavel>2</idResponsavel>
             <nomeResponsavel>TesteResp2</nomeResponsavel>
         </contatoResponsavel>
-        <dataCadastro>2023-12-31T00:00:00-03:00</dataCadastro>
+        <dataCadastro>2024-04-15T00:00:00-03:00</dataCadastro>
         <historicoConsultasMedicas>
             <diagnostico>Nada</diagnostico>
             <exameQueixa>Dor</exameQueixa>
@@ -303,7 +303,7 @@
             <email>teste@teste.com</email>
             <telefone>5566874651</telefone>
         </contato>
-        <dataNascimento>1984-12-30T00:00:00-03:00</dataNascimento>
+        <dataNascimento>1985-03-15T00:00:00-03:00</dataNascimento>
         <endereco>
             <bairro>Bairro2</bairro>
             <cep>64886</cep>
@@ -321,10 +321,10 @@
             <idResponsavel>3</idResponsavel>
             <nomeResponsavel>TesteResp23</nomeResponsavel>
         </contatoResponsavel>
-        <dataCadastro>2023-12-31T00:00:00-03:00</dataCadastro>
+        <dataCadastro>2024-04-15T00:00:00-03:00</dataCadastro>
         <historicoConsultasMedicas>
             <diagnostico>Tendinite</diagnostico>
-            <exameQueixa>Dor no Braço</exameQueixa>
+            <exameQueixa>Dor no Braï¿½o</exameQueixa>
             <idConsulta>4</idConsulta>
             <idMedico>2</idMedico>
             <idPaciente>2</idPaciente>
@@ -333,7 +333,7 @@
         </historicoConsultasMedicas>
         <historicoConsultasMedicas>
             <diagnostico>Fratura</diagnostico>
-            <exameQueixa>Dor no Braço</exameQueixa>
+            <exameQueixa>Dor no Braï¿½o</exameQueixa>
             <idConsulta>5</idConsulta>
             <idMedico>3</idMedico>
             <idPaciente>2</idPaciente>
@@ -342,7 +342,7 @@
         </historicoConsultasMedicas>
         <historicoConsultasMedicas>
             <diagnostico>Fratura</diagnostico>
-            <exameQueixa>Dor no Braço</exameQueixa>
+            <exameQueixa>Dor no Braï¿½o</exameQueixa>
             <idConsulta>6</idConsulta>
             <idMedico>4</idMedico>
             <idPaciente>2</idPaciente>
@@ -359,7 +359,7 @@
             <email>teste@emai.com</email>
             <telefone>55495156</telefone>
         </contato>
-        <dataNascimento>2004-12-26T00:00:00-02:00</dataNascimento>
+        <dataNascimento>2005-03-26T00:00:00-03:00</dataNascimento>
         <endereco>
             <bairro>baiiro3</bairro>
             <cep>6846</cep>
@@ -391,7 +391,7 @@
             <idResponsavel>6</idResponsavel>
             <nomeResponsavel>test</nomeResponsavel>
         </contatoResponsavel>
-        <dataCadastro>2023-12-31T00:00:00-03:00</dataCadastro>
+        <dataCadastro>2024-04-15T00:00:00-03:00</dataCadastro>
         <historicoConsultasMedicas>
             <diagnostico>Virose</diagnostico>
             <exameQueixa>Nausea</exameQueixa>
@@ -417,7 +417,7 @@
             <idMedico>2</idMedico>
             <idPaciente>3</idPaciente>
             <indicacaoCirurgica>false</indicacaoCirurgica>
-            <prescricao>Anti inflamatório</prescricao>
+            <prescricao>Anti inflamatï¿½rio</prescricao>
         </historicoConsultasMedicas>
         <idPaciente>3</idPaciente>
         <idade>19</idade>
@@ -429,7 +429,7 @@
             <email>teste@teste.com</email>
             <telefone>+5586186</telefone>
         </contato>
-        <dataNascimento>2000-12-31T00:00:00-02:00</dataNascimento>
+        <dataNascimento>2001-01-01T00:00:00-02:00</dataNascimento>
         <endereco>
             <bairro>bairro</bairro>
             <cep>46416</cep>
@@ -447,7 +447,7 @@
             <idResponsavel>7</idResponsavel>
             <nomeResponsavel>respNovamente</nomeResponsavel>
         </contatoResponsavel>
-        <dataCadastro>2023-12-31T00:00:00-03:00</dataCadastro>
+        <dataCadastro>2024-04-15T00:00:00-03:00</dataCadastro>
         <historicoConsultasMedicas>
             <diagnostico>Virose</diagnostico>
             <exameQueixa>Febre</exameQueixa>

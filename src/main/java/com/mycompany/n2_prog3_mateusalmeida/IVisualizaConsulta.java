@@ -8,6 +8,7 @@ import com.mycompany.n2_prog3_mateusalmeida.App;
 import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -141,12 +142,12 @@ public class IVisualizaConsulta implements Initializable{
             btnSalvar.setDisable(true);
             cbConsulta.setDisable(false);
             bloquearBotoes();
-            //JOptionPane.showMessageDialog(null, "Consulta alterada com sucesso");
+            ErrorHandler.exibirMsgInfo("Consulta alterada com sucesso", "Cadastro Consulta");
        
         }catch(NumberFormatException e){
-            //JOptionPane.showMessageDialog(null, "Preencha os campos corretamente");
+            ErrorHandler.exibirMsgAlerta("Preencha os campos corretamente", "Cadastro Consulta");
         }catch(Exception e){
-            //JOptionPane.showMessageDialog(null, "Tente Novamente");
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Cadastro Consulta");
         }
     }
     
@@ -165,7 +166,7 @@ public class IVisualizaConsulta implements Initializable{
                 ObservableList<ConsultaMedica> consultas = FXCollections.observableArrayList(TelaPrincipal.arrayConsultas);
                 cbConsulta.setItems(consultas);
                 cbConsulta.setValue(TelaPrincipal.arrayConsultas.get(0));
-            //JOptionPane.showMessageDialog(null, "Consulta deletada com sucesso");
+                ErrorHandler.exibirMsgInfo("Consulta deletada com sucesso", "Cadastro Consulta");
             }else{
                 cbConsulta.setItems(null);
                 limparCampos();
@@ -175,7 +176,7 @@ public class IVisualizaConsulta implements Initializable{
     }
     
     @FXML
-    private void editarConsulta() {                                              
+    private void editarConsulta() throws IOException {                                              
         //Ao clicar em Editar, habilitar todos os campos e o botao de salvar, desabilitar deletar.
         if(TelaPrincipal.arrayConsultas.size() > 0){
             desbloquearBotoes();
@@ -184,7 +185,7 @@ public class IVisualizaConsulta implements Initializable{
             cbConsulta.setDisable(true);
             btnEditar.setDisable(true);
         }else{
-            //JOptionPane.showMessageDialog(null, "Nao existe consulta cadastrado");
+            ErrorHandler.exibirMsgAlerta("Nao existe consulta cadastrado", "Cadastro Paciente");
         }
     }  
     

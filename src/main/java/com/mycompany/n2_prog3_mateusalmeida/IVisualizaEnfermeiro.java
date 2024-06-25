@@ -7,6 +7,7 @@ package com.mycompany.n2_prog3_mateusalmeida;
 import com.mycompany.n2_prog3_mateusalmeida.App;
 import com.mycompany.n2_prog3_mateusalmeida.models.Enfermeiro;
 import com.mycompany.n2_prog3_mateusalmeida.models.Genero;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.time.ZoneOffset;
@@ -172,45 +173,45 @@ public class IVisualizaEnfermeiro implements Initializable{
     
     @FXML
     private void alterarEnfermeiro() throws IOException{
-       Enfermeiro enfermeiro = cbEnfermeiro.getSelectionModel().getSelectedItem();
-       try{
-       enfermeiro.setNomeCompleto((String)textFieldNomeEnfermeiro.getText());
-       enfermeiro.setDataNascimento(Date.from(this.dataNascimento.getValue().atStartOfDay().toInstant(ZoneOffset.UTC)));
-       if(radioBtnSim.isSelected()){
-           enfermeiro.setTreinadoOpRX(true);
-       }
-       else{
-           enfermeiro.setTreinadoOpRX(false);
-       }
-       if(radioBtnM.isSelected()){
-           enfermeiro.setGenero(Genero.M);
-       }
-       else{
-           enfermeiro.setGenero(Genero.F);
-       }
-       enfermeiro.setSetor((String)textFieldSetor.getText());
-       enfermeiro.setChSemanal((int)Integer.parseInt(textFieldCargaHoraria.getText()));
-       enfermeiro.getEndereco().setRua((String)textFieldRua.getText());
-       enfermeiro.getEndereco().setNumero((int)Integer.parseInt(textFieldNumero.getText()));
-       enfermeiro.getEndereco().setBairro((String)textFieldBairro.getText());
-       enfermeiro.getEndereco().setCidade((String)textFieldCidade.getText());
-       enfermeiro.getEndereco().setEstado((String)textFieldEstado.getText());
-       enfermeiro.getEndereco().setCep((int)Integer.parseInt(textFieldCEP.getText()));
-       enfermeiro.getContato().setCelular((String) textFieldCelular.getText());
-       enfermeiro.getContato().setTelefone((String) textFieldTelefone.getText());
-       enfermeiro.getContato().setEmail((String) textFieldEmail.getText());
-       //JOptionPane.showMessageDialog(null, "Enfermeiro alterado com sucesso");
-       ObservableList<Enfermeiro> enfermeiros = FXCollections.observableArrayList(TelaPrincipal.arrayEnfermeiros);
-       cbEnfermeiro.setItems(enfermeiros);
-       btnEditar.setDisable(false);
-       btnDeletar.setDisable(false);
-       btnSalvar.setDisable(true);
-       cbEnfermeiro.setDisable(false);
+        Enfermeiro enfermeiro = cbEnfermeiro.getSelectionModel().getSelectedItem();
+        try{
+        enfermeiro.setNomeCompleto((String)textFieldNomeEnfermeiro.getText());
+        enfermeiro.setDataNascimento(Date.from(this.dataNascimento.getValue().atStartOfDay().toInstant(ZoneOffset.UTC)));
+        if(radioBtnSim.isSelected()){
+            enfermeiro.setTreinadoOpRX(true);
+        }
+        else{
+            enfermeiro.setTreinadoOpRX(false);
+        }
+        if(radioBtnM.isSelected()){
+            enfermeiro.setGenero(Genero.M);
+        }
+        else{
+            enfermeiro.setGenero(Genero.F);
+        }
+        enfermeiro.setSetor((String)textFieldSetor.getText());
+        enfermeiro.setChSemanal((int)Integer.parseInt(textFieldCargaHoraria.getText()));
+        enfermeiro.getEndereco().setRua((String)textFieldRua.getText());
+        enfermeiro.getEndereco().setNumero((int)Integer.parseInt(textFieldNumero.getText()));
+        enfermeiro.getEndereco().setBairro((String)textFieldBairro.getText());
+        enfermeiro.getEndereco().setCidade((String)textFieldCidade.getText());
+        enfermeiro.getEndereco().setEstado((String)textFieldEstado.getText());
+        enfermeiro.getEndereco().setCep((int)Integer.parseInt(textFieldCEP.getText()));
+        enfermeiro.getContato().setCelular((String) textFieldCelular.getText());
+        enfermeiro.getContato().setTelefone((String) textFieldTelefone.getText());
+        enfermeiro.getContato().setEmail((String) textFieldEmail.getText());
+        ErrorHandler.exibirMsgInfo("Enfermeiro alterado com sucesso", "Cadastro Enfermeiro");
+        ObservableList<Enfermeiro> enfermeiros = FXCollections.observableArrayList(TelaPrincipal.arrayEnfermeiros);
+        cbEnfermeiro.setItems(enfermeiros);
+        btnEditar.setDisable(false);
+        btnDeletar.setDisable(false);
+        btnSalvar.setDisable(true);
+        cbEnfermeiro.setDisable(false);
         bloquearBotoes();
-       }catch(NumberFormatException e){
-            //JOptionPane.showMessageDialog(null, "Preencha os campos corretamente");
-       }catch(Exception e){
-            //JOptionPane.showMessageDialog(null, "Tente Novamente");
+        }catch(NumberFormatException e){
+           ErrorHandler.exibirMsgAlerta("Preencha os campos corretamente", "Cadastro Enfermeiro");
+        }catch(Exception e){
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Cadastro Enfermeiro");
        }
     }
     
@@ -223,7 +224,7 @@ public class IVisualizaEnfermeiro implements Initializable{
             btnDeletar.setDisable(true);
             cbEnfermeiro.setDisable(true);
         }else{
-            //JOptionPane.showMessageDialog(null, "Nao existe paciente cadastrado");
+            ErrorHandler.exibirMsgAlerta("Nao existe enfermeiro cadastrado", "Cadastro Enfermeiro");
         }
     }
     
@@ -233,7 +234,7 @@ public class IVisualizaEnfermeiro implements Initializable{
         if(TelaPrincipal.arrayEnfermeiros.size() > 0){
             int id = cbEnfermeiro.getSelectionModel().getSelectedIndex();
             TelaPrincipal.arrayEnfermeiros.remove(id);
-            //JOptionPane.showMessageDialog(null, "Medico deletado com sucesso");
+            ErrorHandler.exibirMsgInfo("Enfermeiro deletado com sucesso", "Cadastro Enfermeiro");
         }
         if(TelaPrincipal.arrayEnfermeiros.size() != 0){
             ObservableList<Enfermeiro> enfermeiros = FXCollections.observableArrayList(TelaPrincipal.arrayEnfermeiros);

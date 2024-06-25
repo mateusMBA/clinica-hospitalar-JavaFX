@@ -13,6 +13,7 @@ import com.mycompany.n2_prog3_mateusalmeida.models.Genero;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
 import com.mycompany.n2_prog3_mateusalmeida.models.Responsavel;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +29,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ImportarExcel {
     
-    public static void lerExcel() {
+    public static void lerExcel() throws IOException {
 		
         try {
             XSSFWorkbook workbook = new XSSFWorkbook("C:/Users/mateu/Desktop/Estudos/Femass/Prog 3/N2_Prog3_MateusAlmeida/src/main/java/com/mycompany/n2_prog3_mateusalmeida/dados/DadosClinicaHospitalar.xlsx"); 
@@ -195,10 +196,9 @@ public class ImportarExcel {
                 //adicionar as informacoes ao array de enfermeiros
                 TelaPrincipal.arrayEnfermeiros.add(enfermeiro);
             }
-            
-            //JOptionPane.showMessageDialog(null, "Importação Realizada com Sucesso");
+            ErrorHandler.exibirMsgInfo("Importação Realizada com Sucesso", "Importar Excel");
             }catch(IOException e){
-                    e.printStackTrace();
+                    ErrorHandler.exibirMsgErro("Tente Novamente", "Importar Excel");
 		}
 	
 		

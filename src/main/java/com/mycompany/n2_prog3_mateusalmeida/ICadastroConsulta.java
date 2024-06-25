@@ -4,6 +4,7 @@ import com.mycompany.n2_prog3_mateusalmeida.App;
 import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -91,12 +92,12 @@ public class ICadastroConsulta implements Initializable{
             TelaPrincipal.arrayConsultas.add(consulta);
             //Insere a nova consulta no historico de consultas do paciente
             Paciente.findById(TelaPrincipal.arrayPacientes, idPaciente).getHistoricoConsultasMedicas().add(consulta);
-            //javax.swing.JOptionPane.showMessageDialog(null, "Consulta cadastrada com sucesso"); ALERTA
+            ErrorHandler.exibirMsgInfo("Consulta cadastrada com sucesso", "Cadastro Consulta");
             limparCampos();
         }catch(NumberFormatException e){
-            //javax.swing.JOptionPane.showMessageDialog(null, "Preencha os campos corretamente"); ALERTA
+            ErrorHandler.exibirMsgAlerta("Preencha os campos corretamente", "Cadastro Consulta");
         }catch(Exception e){
-            //javax.swing.JOptionPane.showMessageDialog(null, "Tente Novamente"); ALERTA
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Cadastro Consulta");
         }
     }
     

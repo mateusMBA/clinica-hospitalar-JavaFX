@@ -13,6 +13,7 @@ import com.mycompany.n2_prog3_mateusalmeida.models.Genero;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
 import com.mycompany.n2_prog3_mateusalmeida.models.Responsavel;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,7 +32,7 @@ import org.json.JSONObject;
  */
 public class ImportarJSON {
     
-    public static void importarJSON(){
+    public static void importarJSON() throws IOException{
         TelaPrincipal.arrayConsultas = new ArrayList<>();
         TelaPrincipal.arrayMedicos = new ArrayList<>();
         TelaPrincipal.arrayPacientes = new ArrayList<>();
@@ -186,9 +187,9 @@ public class ImportarJSON {
                 //adicionar as informacoes ao array de medicos
                 TelaPrincipal.arrayEnfermeiros.add(enfermeiro);
             }
-            
+            ErrorHandler.exibirMsgInfo("Importação Realizada com Sucesso", "Importar JSON");
         } catch (IOException e) {
-            e.printStackTrace();
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Importar JSON");
         }
     }
     

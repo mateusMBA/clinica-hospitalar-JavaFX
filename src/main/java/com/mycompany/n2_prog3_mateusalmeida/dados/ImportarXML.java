@@ -10,8 +10,10 @@ import com.mycompany.n2_prog3_mateusalmeida.models.Enfermeiro;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
 import com.mycompany.n2_prog3_mateusalmeida.models.XMLParser;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -24,7 +26,7 @@ import javax.xml.bind.Unmarshaller;
  */
 public class ImportarXML {
     
-    public static void importarXML(){
+    public static void importarXML() throws IOException{
         
         TelaPrincipal.arrayConsultas = new ArrayList<>();
         TelaPrincipal.arrayMedicos = new ArrayList<>();
@@ -47,8 +49,9 @@ public class ImportarXML {
         for(ConsultaMedica consulta : dados.getConsultas()){
             TelaPrincipal.arrayConsultas.add(consulta);
         }
+        ErrorHandler.exibirMsgInfo("Importação Realizada com Sucesso", "Importar XML");
         }catch(Exception ex){
-            ex.printStackTrace();
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Importar XML");
         }
     }
     

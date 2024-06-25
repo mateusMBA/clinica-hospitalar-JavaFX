@@ -10,6 +10,7 @@ import com.mycompany.n2_prog3_mateusalmeida.models.ContatoTelEmail;
 import com.mycompany.n2_prog3_mateusalmeida.models.Endereco;
 import com.mycompany.n2_prog3_mateusalmeida.models.Genero;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.time.ZoneOffset;
@@ -311,16 +312,16 @@ public class IVisualizaMedico implements Initializable{
        medico.getContato().setEmail((String) textFieldEmail.getText());
        ObservableList<Medico> medicos = FXCollections.observableArrayList(TelaPrincipal.arrayMedicos);
        cbMedico.setItems(medicos);
-       //JOptionPane.showMessageDialog(null, "Médico alterado com sucesso");
+       ErrorHandler.exibirMsgInfo("Médico alterado com sucesso", "Cadastro Médico");
        btnEditar.setDisable(false);
        btnDeletar.setDisable(false);
        btnSalvar.setDisable(true);
        cbMedico.setDisable(false);
         bloquearBotoes();
        }catch(NumberFormatException e){
-            //JOptionPane.showMessageDialog(null, "Preencha os campos corretamente");
+            ErrorHandler.exibirMsgAlerta("Preencha os campos corretamente", "Cadastro Médico");
        }catch(Exception e){
-            //JOptionPane.showMessageDialog(null, "Tente Novamente");
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Cadastro Médico");
        }
     }
     
@@ -333,7 +334,7 @@ public class IVisualizaMedico implements Initializable{
             btnDeletar.setDisable(true);
             cbMedico.setDisable(true);
         }else{
-            //JOptionPane.showMessageDialog(null, "Nao existe paciente cadastrado");
+            ErrorHandler.exibirMsgAlerta("Nao existe Médico cadastrado", "Cadastro Paciente");
         }
     }
     
@@ -345,7 +346,7 @@ public class IVisualizaMedico implements Initializable{
             long idMedico = TelaPrincipal.arrayMedicos.get(id).getIdMedico();
             TelaPrincipal.arrayMedicos.remove(id);
             ConsultaMedica.removerConsultaPorIdMedico(TelaPrincipal.arrayConsultas, idMedico);
-            //JOptionPane.showMessageDialog(null, "Medico deletado com sucesso");
+            ErrorHandler.exibirMsgInfo("Medico deletado com sucesso", "Cadastro Médico");
         }
         if(TelaPrincipal.arrayMedicos.size() != 0){
             ObservableList<Medico> medicos = FXCollections.observableArrayList(TelaPrincipal.arrayMedicos);

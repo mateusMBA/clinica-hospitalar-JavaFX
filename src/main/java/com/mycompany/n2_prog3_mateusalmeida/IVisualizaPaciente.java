@@ -9,6 +9,7 @@ import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.Genero;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
 import com.mycompany.n2_prog3_mateusalmeida.models.Responsavel;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -276,11 +277,11 @@ public class IVisualizaPaciente implements Initializable{
             btnSalvar.setDisable(true);
             cbPaciente.setDisable(false);
             bloquearBotoes();
-            //JOptionPane.showMessageDialog(null, "Paciente alterado com sucesso");
+            ErrorHandler.exibirMsgInfo("Paciente alterado com sucesso", "Cadastro Paciente");
         }catch(NumberFormatException e){
-            //JOptionPane.showMessageDialog(null, "Preencha os campos corretamente");
+            ErrorHandler.exibirMsgAlerta("Preencha os campos corretamente", "Cadastro Paciente");
         }catch(Exception e){
-            //JOptionPane.showMessageDialog(null, "Tente Novamente");
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Cadastro Paciente");
         }
     }
     
@@ -293,7 +294,7 @@ public class IVisualizaPaciente implements Initializable{
             btnDeletar.setDisable(true);
             cbPaciente.setDisable(true);
         }else{
-            //JOptionPane.showMessageDialog(null, "Nao existe paciente cadastrado");
+            ErrorHandler.exibirMsgAlerta("Nao existe paciente cadastrado", "Cadastro Paciente");
         }
     }
     
@@ -306,7 +307,7 @@ public class IVisualizaPaciente implements Initializable{
             //apagar consultas do array estatico de consulta que tiverem o paciente deletado
             ConsultaMedica.removerConsultaPorIdPaciente(TelaPrincipal.arrayConsultas, idPaciente);
             TelaPrincipal.arrayPacientes.remove(id);
-            //JOptionPane.showMessageDialog(null, "Paciente deletado com sucesso");
+            ErrorHandler.exibirMsgInfo("Paciente deletado com sucesso", "Cadastro Paciente");
         }
         if(TelaPrincipal.arrayPacientes.size() != 0){
             ObservableList<Paciente> pacientes = FXCollections.observableArrayList(TelaPrincipal.arrayPacientes);

@@ -12,6 +12,8 @@ import java.io.FileWriter;
 import com.mycompany.n2_prog3_mateusalmeida.models.Enfermeiro;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
 import com.mycompany.n2_prog3_mateusalmeida.models.Responsavel;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import org.json.*;
 
@@ -21,7 +23,7 @@ import org.json.*;
  */
 public class ExportarJSON {
     
-    public static void exportarXML(){
+    public static void exportarXML() throws IOException{
         JSONObject dados = new JSONObject();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         
@@ -160,9 +162,10 @@ public class ExportarJSON {
         try{
         FileWriter writer = new FileWriter("C:/Users/mateu/Desktop/Estudos/Femass/Prog 3/N2_Prog3_MateusAlmeida/src/main/java/com/mycompany/n2_prog3_mateusalmeida/dados/DadosClinicaHospitalar.json");
         writer.write(dados.toString());
+        ErrorHandler.exibirMsgInfo("Exportação Realizada com Sucesso", "Exportar JSON");
         writer.close();
         }catch(Exception ex){
-            
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Exportar JSON");
         }
     }
     

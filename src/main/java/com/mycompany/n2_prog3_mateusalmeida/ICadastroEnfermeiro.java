@@ -9,6 +9,7 @@ import com.mycompany.n2_prog3_mateusalmeida.models.ContatoTelEmail;
 import com.mycompany.n2_prog3_mateusalmeida.models.Endereco;
 import com.mycompany.n2_prog3_mateusalmeida.models.Enfermeiro;
 import com.mycompany.n2_prog3_mateusalmeida.models.Genero;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.time.ZoneOffset;
@@ -143,12 +144,12 @@ public class ICadastroEnfermeiro implements Initializable{
             ContatoTelEmail contato = new ContatoTelEmail(telefone, celular, email);
             Enfermeiro enfermeiro = new Enfermeiro(raioX, setor, cargaHoraria, nome, dataNascimento, endereco, contato, genero);
             TelaPrincipal.arrayEnfermeiros.add(enfermeiro);
-            //JOptionPane.showMessageDialog(null, "Médico cadastrado com sucesso");
+            ErrorHandler.exibirMsgInfo("Enfermeiro cadastrado com sucesso", "Cadastro Enfermeiro");
             limparCampos();
        }catch(NumberFormatException e){
-            //JOptionPane.showMessageDialog(null, "Preencha os campos corretamente");
+            ErrorHandler.exibirMsgAlerta("Preencha os campos corretamente", "Cadastro Enfermeiro");
        }catch(Exception e){
-            //JOptionPane.showMessageDialog(null, "Tente Novamente");
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Cadastro Enfermeiro");
        }
     }
     

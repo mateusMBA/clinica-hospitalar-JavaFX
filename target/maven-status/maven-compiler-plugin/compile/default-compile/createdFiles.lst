@@ -24,6 +24,7 @@ com\mycompany\n2_prog3_mateusalmeida\TelaPrincipal.class
 com\mycompany\n2_prog3_mateusalmeida\models\Medico.class
 com\mycompany\n2_prog3_mateusalmeida\App.class
 com\mycompany\n2_prog3_mateusalmeida\IVisualizaEnfermeiro.class
+com\mycompany\n2_prog3_mateusalmeida\utils\ErrorHandler.class
 com\mycompany\n2_prog3_mateusalmeida\dados\ExportarXML.class
 com\mycompany\n2_prog3_mateusalmeida\models\Paciente.class
 com\mycompany\n2_prog3_mateusalmeida\IVisualizaMedico.class

@@ -7,6 +7,7 @@ package com.mycompany.n2_prog3_mateusalmeida.dados;
 import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipal;
 import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.Responsavel;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -26,7 +27,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ExportarExcel {
     
-    public static void escreverExcel(){
+    public static void escreverExcel() throws IOException{
         
         //C:\Users\mateu\Desktop\Estudos\Femass\Prog 3\Projeto_ClinicaHospitalar_MateusAlmeida\src\main\java\com\mycompany\projeto_clinicahospitalar_mateusalmeida\dados
         XSSFWorkbook workbook = new XSSFWorkbook();
@@ -213,11 +214,11 @@ public class ExportarExcel {
 
             workbook.write(out);
             out.close();
-            //JOptionPane.showMessageDialog(null, "Exportação Realizada com Sucesso");
+            ErrorHandler.exibirMsgInfo("Exportação Realizada com Sucesso", "Exportar Excel");
             } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-            } catch (IOException e) {
-                    e.printStackTrace();
+                    ErrorHandler.exibirMsgAlerta("Arquivo não encontrado", "Exportar Excel");
+            } catch (Exception e) {
+                    ErrorHandler.exibirMsgErro("Tente Novamente", "Exportar Excel");
             }
     }
     

@@ -10,7 +10,9 @@ import com.mycompany.n2_prog3_mateusalmeida.models.Enfermeiro;
 import com.mycompany.n2_prog3_mateusalmeida.models.Medico;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
 import com.mycompany.n2_prog3_mateusalmeida.models.XMLParser;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -21,7 +23,7 @@ import javax.xml.bind.Marshaller;
  */
 public class ExportarXML {
     
-    public static void exportarXML(){
+    public static void exportarXML() throws IOException{
         
         try{
 
@@ -44,10 +46,10 @@ public class ExportarXML {
                 pacientes[i] = TelaPrincipal.arrayPacientes.get(i);
             XMLParser dadosXML = new XMLParser(pacientes, medicos, consultas, enfermeiros);
             marshallerConsulta.marshal(dadosXML, fDados);
-            
+            ErrorHandler.exibirMsgInfo("Exportação Realizada com Sucesso", "Exportar XML");
             
         }catch(Exception ex){
-            ex.printStackTrace();
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Exportar XML");
         }
     }
     

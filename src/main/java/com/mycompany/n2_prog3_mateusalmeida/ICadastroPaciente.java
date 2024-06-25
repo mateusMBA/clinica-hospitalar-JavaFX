@@ -10,6 +10,7 @@ import com.mycompany.n2_prog3_mateusalmeida.models.Endereco;
 import com.mycompany.n2_prog3_mateusalmeida.models.Genero;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
 import com.mycompany.n2_prog3_mateusalmeida.models.Responsavel;
+import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.time.ZoneOffset;
@@ -131,12 +132,12 @@ public class ICadastroPaciente implements Initializable{
             TelaPrincipal.arrayPacientes.add(paciente);
             System.out.println(TelaPrincipal.arrayPacientes.get(0).getNomeCompleto());
             contatosResp = new ArrayList<Responsavel>();
-            //javax.swing.JOptionPane.showMessageDialog(null, "Paciente cadastrado com sucesso");
-            //resetarCampos();
+            ErrorHandler.exibirMsgInfo("Paciente cadastrado com sucesso", "Cadastro Paciente");
+            limparCampos();
        }catch(NumberFormatException e){
-            //javax.swing.JOptionPane.showMessageDialog(null, "Preencha os campos corretamente");
+            ErrorHandler.exibirMsgAlerta("Preencha os campos corretamente", "Cadastro Paciente");
        }catch(Exception e){
-            //javax.swing.JOptionPane.showMessageDialog(null, "Tente Novamente");
+            ErrorHandler.exibirMsgErro("Tente Novamente", "Cadastro Paciente");
        }
     }
     
