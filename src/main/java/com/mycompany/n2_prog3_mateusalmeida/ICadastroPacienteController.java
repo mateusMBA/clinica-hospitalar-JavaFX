@@ -28,7 +28,7 @@ import javafx.scene.control.TextField;
  *
  * @author mateu
  */
-public class ICadastroPaciente implements Initializable{
+public class ICadastroPacienteController implements Initializable{
     
     ArrayList<Responsavel> contatosResp = new ArrayList<>();
     
@@ -129,8 +129,8 @@ public class ICadastroPaciente implements Initializable{
             //Cria um objeto do tipo Responsavel com os valores dos campos na tela e adiciona no array de responsaveis
             contatosResp.add(new Responsavel(nomeResponsavel, telefoneResponsavel, celularResponsavel, emailResponsavel));
             Paciente paciente = new Paciente(obsGeral, new ArrayList<Responsavel>(contatosResp), nome, dataNascimento, endereco, contato,genero);
-            TelaPrincipal.arrayPacientes.add(paciente);
-            System.out.println(TelaPrincipal.arrayPacientes.get(0).getNomeCompleto());
+            TelaPrincipalController.arrayPacientes.add(paciente);
+            System.out.println(TelaPrincipalController.arrayPacientes.get(0).getNomeCompleto());
             contatosResp = new ArrayList<Responsavel>();
             ErrorHandler.exibirMsgInfo("Paciente cadastrado com sucesso", "Cadastro Paciente");
             limparCampos();

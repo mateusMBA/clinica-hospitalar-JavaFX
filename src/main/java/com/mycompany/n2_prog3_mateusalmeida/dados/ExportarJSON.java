@@ -4,7 +4,7 @@
  */
 package com.mycompany.n2_prog3_mateusalmeida.dados;
 
-import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipal;
+import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipalController;
 import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.ContatoTelEmail;
 import com.mycompany.n2_prog3_mateusalmeida.models.Paciente;
@@ -39,7 +39,7 @@ public class ExportarJSON {
         
         
         //Loop through the pacientes ArrayList and convert each Paciente to JSONObject
-        for (Paciente paciente : TelaPrincipal.arrayPacientes){
+        for (Paciente paciente : TelaPrincipalController.arrayPacientes){
             JSONObject pacienteObject = new JSONObject();
             pacienteObject.put("nomeCompleto", paciente.getNomeCompleto());
             pacienteObject.put("dataNascimento", dateFormat.format(paciente.getDataNascimento()));
@@ -82,7 +82,7 @@ public class ExportarJSON {
         }
         dados.put("pacientes",pacientesArray);
         
-        for(Medico medico: TelaPrincipal.arrayMedicos) {
+        for(Medico medico: TelaPrincipalController.arrayMedicos) {
             //Preencher informacoes de medico na aba Medico
             JSONObject medicoObject = new JSONObject();          
             medicoObject.put("idMedico", medico.getIdMedico());
@@ -117,7 +117,7 @@ public class ExportarJSON {
         }
         dados.put("medicos",medicosArray);
         
-        for(Enfermeiro enfermeiro: TelaPrincipal.arrayEnfermeiros) {
+        for(Enfermeiro enfermeiro: TelaPrincipalController.arrayEnfermeiros) {
             //Preencher informacoes de medico na aba Medico
             JSONObject enfermeiroObject = new JSONObject();          
             enfermeiroObject.put("idEnfermeiro", enfermeiro.getIdEnfermeiro());
@@ -144,7 +144,7 @@ public class ExportarJSON {
         }
         dados.put("enfermeiros",enfermeirosArray);
         
-        for(ConsultaMedica consulta: TelaPrincipal.arrayConsultas) {
+        for(ConsultaMedica consulta: TelaPrincipalController.arrayConsultas) {
             //Preencher informacoes de medico na aba Medico
             JSONObject consultaObject = new JSONObject();          
             consultaObject.put("idConsulta", consulta.getIdConsulta());

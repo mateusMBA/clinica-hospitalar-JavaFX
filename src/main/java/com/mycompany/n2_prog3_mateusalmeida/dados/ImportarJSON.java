@@ -4,7 +4,7 @@
  */
 package com.mycompany.n2_prog3_mateusalmeida.dados;
 
-import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipal;
+import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipalController;
 import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.ContatoTelEmail;
 import com.mycompany.n2_prog3_mateusalmeida.models.Endereco;
@@ -33,10 +33,10 @@ import org.json.JSONObject;
 public class ImportarJSON {
     
     public static void importarJSON() throws IOException{
-        TelaPrincipal.arrayConsultas = new ArrayList<>();
-        TelaPrincipal.arrayMedicos = new ArrayList<>();
-        TelaPrincipal.arrayPacientes = new ArrayList<>();
-        TelaPrincipal.arrayEnfermeiros = new ArrayList<>();
+        TelaPrincipalController.arrayConsultas = new ArrayList<>();
+        TelaPrincipalController.arrayMedicos = new ArrayList<>();
+        TelaPrincipalController.arrayPacientes = new ArrayList<>();
+        TelaPrincipalController.arrayEnfermeiros = new ArrayList<>();
         
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY"); 
         
@@ -62,7 +62,7 @@ public class ImportarJSON {
                 String prescricao = jsonObject.getString("prescricao");
                 boolean indicacaoCirurgia = jsonObject.getBoolean("cirurgia");
                 ConsultaMedica consulta = new ConsultaMedica(idConsulta, idPaciente, idMedico, queixa, diagnostico, prescricao, indicacaoCirurgia);
-                TelaPrincipal.arrayConsultas.add(consulta);
+                TelaPrincipalController.arrayConsultas.add(consulta);
             }
             
             for (int i = 0; i < arrayPacientes.length(); i++) {
@@ -97,7 +97,7 @@ public class ImportarJSON {
                 for(int j = 0; j < arrayHistorico.length(); j++){
                     JSONObject jsonObjectConsulta = arrayHistorico.getJSONObject(j);
                     long idConsulta = jsonObjectConsulta.getLong("ID");
-                    historicoConsultas.add(ConsultaMedica.findById(TelaPrincipal.arrayConsultas, idConsulta));
+                    historicoConsultas.add(ConsultaMedica.findById(TelaPrincipalController.arrayConsultas, idConsulta));
                 }
                 
                 JSONArray arrayResponsaveis = jsonObject.getJSONArray("contatoResponsavel");
@@ -115,7 +115,7 @@ public class ImportarJSON {
                 Paciente paciente = new Paciente(idPaciente, idade, dataCadastro, obsGeral, nomeCompleto, dataNascimento, endereco, contato, Genero.valueOf(genero));
                 paciente.setContatoResponsavel(contatoResponsavel);
                 paciente.setHistoricoConsultasMedicas(historicoConsultas);
-                TelaPrincipal.arrayPacientes.add(paciente);
+                TelaPrincipalController.arrayPacientes.add(paciente);
             }
             
             for (int i = 0; i < arrayMedicos.length(); i++) {
@@ -153,7 +153,7 @@ public class ImportarJSON {
                 ContatoTelEmail contato = new ContatoTelEmail(telefone, celular, email);
                 Medico medico = new Medico(idMedico, numero, especialidades, cirurgiao, setor, cargaHoraria, nomeCompleto, dataNascimento, endereco, contato, Genero.valueOf(genero));
                 //adicionar as informacoes ao array de medicos
-                TelaPrincipal.arrayMedicos.add(medico);
+                TelaPrincipalController.arrayMedicos.add(medico);
             }
             
             for (int i = 0; i < arrayEnfermeiros.length(); i++) {
@@ -185,7 +185,7 @@ public class ImportarJSON {
                 ContatoTelEmail contato = new ContatoTelEmail(telefone, celular, email);
                 Enfermeiro enfermeiro = new Enfermeiro(idEnfermeiro, raioX, setor, cargaHoraria, nomeCompleto, dataNascimento, endereco, contato, Genero.valueOf(genero));
                 //adicionar as informacoes ao array de medicos
-                TelaPrincipal.arrayEnfermeiros.add(enfermeiro);
+                TelaPrincipalController.arrayEnfermeiros.add(enfermeiro);
             }
             ErrorHandler.exibirMsgInfo("Importação Realizada com Sucesso", "Importar JSON");
         } catch (IOException e) {

@@ -4,7 +4,7 @@
  */
 package com.mycompany.n2_prog3_mateusalmeida.dados;
 
-import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipal;
+import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipalController;
 import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.Responsavel;
 import com.mycompany.n2_prog3_mateusalmeida.utils.ErrorHandler;
@@ -101,27 +101,27 @@ public class ExportarExcel {
         //Contador utilizado para criar o id Responsavel que sera usado como PK para correlacionar com paciente
         int contador = 0;
         //Preencher informacoes de paciente na aba paciente
-        for(int i = 0; i < TelaPrincipal.arrayPacientes.size(); i++) {
+        for(int i = 0; i < TelaPrincipalController.arrayPacientes.size(); i++) {
             Row dataRow = abaPaciente.createRow(i + 1);            
-            dataRow.createCell(0).setCellValue(TelaPrincipal.arrayPacientes.get(i).getIdPaciente());
-            dataRow.createCell(1).setCellValue(TelaPrincipal.arrayPacientes.get(i).getNomeCompleto());
-            dataRow.createCell(2).setCellValue(formatoData.format(TelaPrincipal.arrayPacientes.get(i).getDataNascimento()));
-            dataRow.createCell(3).setCellValue(TelaPrincipal.arrayPacientes.get(i).getIdade());
-            dataRow.createCell(4).setCellValue(TelaPrincipal.arrayPacientes.get(i).getGenero().toString());
-            dataRow.createCell(5).setCellValue(formatoData.format(TelaPrincipal.arrayPacientes.get(i).getDataCadastro()));
-            dataRow.createCell(6).setCellValue(TelaPrincipal.arrayPacientes.get(i).getEndereco().getRua());
-            dataRow.createCell(7).setCellValue(TelaPrincipal.arrayPacientes.get(i).getEndereco().getNumero());
-            dataRow.createCell(8).setCellValue(TelaPrincipal.arrayPacientes.get(i).getEndereco().getBairro());
-            dataRow.createCell(9).setCellValue(TelaPrincipal.arrayPacientes.get(i).getEndereco().getCidade());
-            dataRow.createCell(10).setCellValue(TelaPrincipal.arrayPacientes.get(i).getEndereco().getEstado());
-            dataRow.createCell(11).setCellValue(TelaPrincipal.arrayPacientes.get(i).getEndereco().getCep());
-            dataRow.createCell(12).setCellValue(TelaPrincipal.arrayPacientes.get(i).getContato().getCelular());
-            dataRow.createCell(13).setCellValue(TelaPrincipal.arrayPacientes.get(i).getContato().getTelefone());
-            dataRow.createCell(14).setCellValue(TelaPrincipal.arrayPacientes.get(i).getContato().getEmail());
-            dataRow.createCell(15).setCellValue(TelaPrincipal.arrayPacientes.get(i).getObsGeral());
+            dataRow.createCell(0).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getIdPaciente());
+            dataRow.createCell(1).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getNomeCompleto());
+            dataRow.createCell(2).setCellValue(formatoData.format(TelaPrincipalController.arrayPacientes.get(i).getDataNascimento()));
+            dataRow.createCell(3).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getIdade());
+            dataRow.createCell(4).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getGenero().toString());
+            dataRow.createCell(5).setCellValue(formatoData.format(TelaPrincipalController.arrayPacientes.get(i).getDataCadastro()));
+            dataRow.createCell(6).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getEndereco().getRua());
+            dataRow.createCell(7).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getEndereco().getNumero());
+            dataRow.createCell(8).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getEndereco().getBairro());
+            dataRow.createCell(9).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getEndereco().getCidade());
+            dataRow.createCell(10).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getEndereco().getEstado());
+            dataRow.createCell(11).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getEndereco().getCep());
+            dataRow.createCell(12).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getContato().getCelular());
+            dataRow.createCell(13).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getContato().getTelefone());
+            dataRow.createCell(14).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getContato().getEmail());
+            dataRow.createCell(15).setCellValue(TelaPrincipalController.arrayPacientes.get(i).getObsGeral());
             String consultasAux = "";
             //Array criado com os ids de todas as consultas, separados por ","
-            for(ConsultaMedica consulta : TelaPrincipal.arrayPacientes.get(i).getHistoricoConsultasMedicas()){
+            for(ConsultaMedica consulta : TelaPrincipalController.arrayPacientes.get(i).getHistoricoConsultasMedicas()){
                 consultasAux += consulta.getIdConsulta() + ",";
             }
             if(consultasAux.length()>0)
@@ -129,7 +129,7 @@ public class ExportarExcel {
             dataRow.createCell(16).setCellValue(consultasAux.substring(0, consultasAux.length()-1));
             //Array criado com os ids de todas os responsaveis, separados por ","
             String responsavelAux = "";
-            for(Responsavel responsavel : TelaPrincipal.arrayPacientes.get(i).getContatoResponsavel()){
+            for(Responsavel responsavel : TelaPrincipalController.arrayPacientes.get(i).getContatoResponsavel()){
                 //Criando registro de Responsavel a partir do arraylist de contato Responsavel de cada paciente
                 //Foi feito dessa forma para linkar o id gravado na tabela Paciente com o id Responsavel da tabela Responsavel
                 Row dataRowResponsavel = abaResponsavel.createRow(contador + 1);
@@ -146,66 +146,66 @@ public class ExportarExcel {
                 dataRow.createCell(17).setCellValue(responsavelAux.substring(0, responsavelAux.length()-1));
         }
              
-        for(int i = 0; i < TelaPrincipal.arrayMedicos.size(); i++) {
+        for(int i = 0; i < TelaPrincipalController.arrayMedicos.size(); i++) {
             //Preencher informacoes de medico na aba Medico
             Row dataRow = abaMedico.createRow(i + 1);            
-            dataRow.createCell(0).setCellValue(TelaPrincipal.arrayMedicos.get(i).getIdMedico());
-            dataRow.createCell(1).setCellValue(TelaPrincipal.arrayMedicos.get(i).getNomeCompleto());
-            dataRow.createCell(2).setCellValue(formatoData.format(TelaPrincipal.arrayMedicos.get(i).getDataNascimento()));
-            dataRow.createCell(3).setCellValue(TelaPrincipal.arrayMedicos.get(i).getNumeroCRM());
-            dataRow.createCell(4).setCellValue(TelaPrincipal.arrayMedicos.get(i).getGenero().toString());
-            dataRow.createCell(5).setCellValue(TelaPrincipal.arrayMedicos.get(i).getSetor());
-            dataRow.createCell(6).setCellValue(TelaPrincipal.arrayMedicos.get(i).getChSemanal());
+            dataRow.createCell(0).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getIdMedico());
+            dataRow.createCell(1).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getNomeCompleto());
+            dataRow.createCell(2).setCellValue(formatoData.format(TelaPrincipalController.arrayMedicos.get(i).getDataNascimento()));
+            dataRow.createCell(3).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getNumeroCRM());
+            dataRow.createCell(4).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getGenero().toString());
+            dataRow.createCell(5).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getSetor());
+            dataRow.createCell(6).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getChSemanal());
             //Array de string criado para guardas as especialidades, separadas por ","
             String especialidadesAux = "";
-            for(String especialidade : TelaPrincipal.arrayMedicos.get(i).getAreasEspecialidade()){
+            for(String especialidade : TelaPrincipalController.arrayMedicos.get(i).getAreasEspecialidade()){
                 especialidadesAux += especialidade + ",";
             }
             if(especialidadesAux.length()>0)
                 dataRow.createCell(7).setCellValue(especialidadesAux.substring(0, especialidadesAux.length()-1));
-            dataRow.createCell(8).setCellValue(TelaPrincipal.arrayMedicos.get(i).isCirurgiao());
-            dataRow.createCell(9).setCellValue(TelaPrincipal.arrayMedicos.get(i).getEndereco().getRua());
-            dataRow.createCell(10).setCellValue(TelaPrincipal.arrayMedicos.get(i).getEndereco().getNumero());
-            dataRow.createCell(11).setCellValue(TelaPrincipal.arrayMedicos.get(i).getEndereco().getBairro());
-            dataRow.createCell(12).setCellValue(TelaPrincipal.arrayMedicos.get(i).getEndereco().getCidade());
-            dataRow.createCell(13).setCellValue(TelaPrincipal.arrayMedicos.get(i).getEndereco().getEstado());
-            dataRow.createCell(14).setCellValue(TelaPrincipal.arrayMedicos.get(i).getEndereco().getCep());
-            dataRow.createCell(15).setCellValue(TelaPrincipal.arrayMedicos.get(i).getContato().getCelular());
-            dataRow.createCell(16).setCellValue(TelaPrincipal.arrayMedicos.get(i).getContato().getTelefone());
-            dataRow.createCell(17).setCellValue(TelaPrincipal.arrayMedicos.get(i).getContato().getEmail());
+            dataRow.createCell(8).setCellValue(TelaPrincipalController.arrayMedicos.get(i).isCirurgiao());
+            dataRow.createCell(9).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getEndereco().getRua());
+            dataRow.createCell(10).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getEndereco().getNumero());
+            dataRow.createCell(11).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getEndereco().getBairro());
+            dataRow.createCell(12).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getEndereco().getCidade());
+            dataRow.createCell(13).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getEndereco().getEstado());
+            dataRow.createCell(14).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getEndereco().getCep());
+            dataRow.createCell(15).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getContato().getCelular());
+            dataRow.createCell(16).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getContato().getTelefone());
+            dataRow.createCell(17).setCellValue(TelaPrincipalController.arrayMedicos.get(i).getContato().getEmail());
         }
         
-        for(int i = 0; i < TelaPrincipal.arrayEnfermeiros.size(); i++) {
+        for(int i = 0; i < TelaPrincipalController.arrayEnfermeiros.size(); i++) {
             //Preencher informacoes de enfermeiro na aba Enfermeiro
             Row dataRow = abaEnfermeiro.createRow(i + 1);            
-            dataRow.createCell(0).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getIdEnfermeiro());
-            dataRow.createCell(1).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getNomeCompleto());
-            dataRow.createCell(2).setCellValue(formatoData.format(TelaPrincipal.arrayEnfermeiros.get(i).getDataNascimento()));
-            dataRow.createCell(3).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getGenero().toString());
-            dataRow.createCell(4).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getSetor());
-            dataRow.createCell(5).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getChSemanal());
-            dataRow.createCell(6).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).isTreinadoOpRX());
-            dataRow.createCell(7).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getEndereco().getRua());
-            dataRow.createCell(8).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getEndereco().getNumero());
-            dataRow.createCell(9).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getEndereco().getBairro());
-            dataRow.createCell(10).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getEndereco().getCidade());
-            dataRow.createCell(11).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getEndereco().getEstado());
-            dataRow.createCell(12).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getEndereco().getCep());
-            dataRow.createCell(13).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getContato().getCelular());
-            dataRow.createCell(14).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getContato().getTelefone());
-            dataRow.createCell(15).setCellValue(TelaPrincipal.arrayEnfermeiros.get(i).getContato().getEmail());
+            dataRow.createCell(0).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getIdEnfermeiro());
+            dataRow.createCell(1).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getNomeCompleto());
+            dataRow.createCell(2).setCellValue(formatoData.format(TelaPrincipalController.arrayEnfermeiros.get(i).getDataNascimento()));
+            dataRow.createCell(3).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getGenero().toString());
+            dataRow.createCell(4).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getSetor());
+            dataRow.createCell(5).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getChSemanal());
+            dataRow.createCell(6).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).isTreinadoOpRX());
+            dataRow.createCell(7).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getEndereco().getRua());
+            dataRow.createCell(8).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getEndereco().getNumero());
+            dataRow.createCell(9).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getEndereco().getBairro());
+            dataRow.createCell(10).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getEndereco().getCidade());
+            dataRow.createCell(11).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getEndereco().getEstado());
+            dataRow.createCell(12).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getEndereco().getCep());
+            dataRow.createCell(13).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getContato().getCelular());
+            dataRow.createCell(14).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getContato().getTelefone());
+            dataRow.createCell(15).setCellValue(TelaPrincipalController.arrayEnfermeiros.get(i).getContato().getEmail());
         }
         
-        for(int i = 0; i < TelaPrincipal.arrayConsultas.size(); i++) {
+        for(int i = 0; i < TelaPrincipalController.arrayConsultas.size(); i++) {
             //Preencher informacoes de consulta na aba Consulta
             Row dataRow = abaConsulta.createRow(i + 1);            
-            dataRow.createCell(0).setCellValue(TelaPrincipal.arrayConsultas.get(i).getIdConsulta());
-            dataRow.createCell(1).setCellValue(TelaPrincipal.arrayConsultas.get(i).getIdPaciente());
-            dataRow.createCell(2).setCellValue(TelaPrincipal.arrayConsultas.get(i).getIdMedico());
-            dataRow.createCell(3).setCellValue(TelaPrincipal.arrayConsultas.get(i).getExameQueixa());
-            dataRow.createCell(4).setCellValue(TelaPrincipal.arrayConsultas.get(i).getDiagnostico());
-            dataRow.createCell(5).setCellValue(TelaPrincipal.arrayConsultas.get(i).getPrescricao());
-            dataRow.createCell(6).setCellValue(TelaPrincipal.arrayConsultas.get(i).isIndicacaoCirurgica());
+            dataRow.createCell(0).setCellValue(TelaPrincipalController.arrayConsultas.get(i).getIdConsulta());
+            dataRow.createCell(1).setCellValue(TelaPrincipalController.arrayConsultas.get(i).getIdPaciente());
+            dataRow.createCell(2).setCellValue(TelaPrincipalController.arrayConsultas.get(i).getIdMedico());
+            dataRow.createCell(3).setCellValue(TelaPrincipalController.arrayConsultas.get(i).getExameQueixa());
+            dataRow.createCell(4).setCellValue(TelaPrincipalController.arrayConsultas.get(i).getDiagnostico());
+            dataRow.createCell(5).setCellValue(TelaPrincipalController.arrayConsultas.get(i).getPrescricao());
+            dataRow.createCell(6).setCellValue(TelaPrincipalController.arrayConsultas.get(i).isIndicacaoCirurgica());
         }
         
         FileOutputStream out;

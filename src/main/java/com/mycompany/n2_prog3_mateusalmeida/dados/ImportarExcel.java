@@ -4,7 +4,7 @@
  */
 package com.mycompany.n2_prog3_mateusalmeida.dados;
 
-import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipal;
+import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipalController;
 import com.mycompany.n2_prog3_mateusalmeida.models.ConsultaMedica;
 import com.mycompany.n2_prog3_mateusalmeida.models.ContatoTelEmail;
 import com.mycompany.n2_prog3_mateusalmeida.models.Endereco;
@@ -34,10 +34,10 @@ public class ImportarExcel {
         try {
             XSSFWorkbook workbook = new XSSFWorkbook("C:/Users/mateu/Desktop/Estudos/Femass/Prog 3/N2_Prog3_MateusAlmeida/src/main/java/com/mycompany/n2_prog3_mateusalmeida/dados/DadosClinicaHospitalar.xlsx"); 
 			
-            TelaPrincipal.arrayConsultas = new ArrayList<>();
-            TelaPrincipal.arrayMedicos = new ArrayList<>();
-            TelaPrincipal.arrayPacientes = new ArrayList<>();
-            TelaPrincipal.arrayEnfermeiros = new ArrayList<>();
+            TelaPrincipalController.arrayConsultas = new ArrayList<>();
+            TelaPrincipalController.arrayMedicos = new ArrayList<>();
+            TelaPrincipalController.arrayPacientes = new ArrayList<>();
+            TelaPrincipalController.arrayEnfermeiros = new ArrayList<>();
             
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");            
             
@@ -65,7 +65,7 @@ public class ImportarExcel {
                 String prescricao = rowConsulta.getCell(5).getStringCellValue();
                 boolean indicacaoCirurgia = rowConsulta.getCell(6).getBooleanCellValue();
                 ConsultaMedica consulta = new ConsultaMedica(idConsulta, idPaciente, idMedico, queixa, diagnostico, prescricao, indicacaoCirurgia);
-                TelaPrincipal.arrayConsultas.add(consulta);
+                TelaPrincipalController.arrayConsultas.add(consulta);
             }
             
             //Preencher o array estatico de pacientes com as informacoes da aba Paciente do excel
@@ -101,7 +101,7 @@ public class ImportarExcel {
                 //Varrer a string com as ids de consulta
                 for(String id : idConsultas){
                     //Acessar a consulta no vetor estatico de consultas utilizando o idd
-                    ConsultaMedica consulta = ConsultaMedica.findById(TelaPrincipal.arrayConsultas, Long.parseLong(id));
+                    ConsultaMedica consulta = ConsultaMedica.findById(TelaPrincipalController.arrayConsultas, Long.parseLong(id));
                     if(consulta != null)
                         //se existir consulta adicionar ao historico
                         historicoConsultas.add(consulta);
@@ -127,7 +127,7 @@ public class ImportarExcel {
                 paciente.setContatoResponsavel(contatoResponsavel);
                 paciente.setHistoricoConsultasMedicas(historicoConsultas);
                 //adicionar as informacoes ao array de paciente
-                TelaPrincipal.arrayPacientes.add(paciente);
+                TelaPrincipalController.arrayPacientes.add(paciente);
             }
             
             //Preencher o array estatico de medicos com as informacoes da aba Medico do excel
@@ -164,7 +164,7 @@ public class ImportarExcel {
                 ContatoTelEmail contato = new ContatoTelEmail(telefone, celular, email);
                 Medico medico = new Medico(idMedico, numero, especialidades, cirurgiao, setor, cargaHoraria, nomeCompleto, dataNascimento, endereco, contato, Genero.valueOf(genero));
                 //adicionar as informacoes ao array de medicos
-                TelaPrincipal.arrayMedicos.add(medico);
+                TelaPrincipalController.arrayMedicos.add(medico);
             }
             //Preencher o array estatico de medicos com as informacoes da aba Enfermeiro do excel
             for (int i=1; i<=rowCountEnfermeiro; i++) {
@@ -194,7 +194,7 @@ public class ImportarExcel {
                 ContatoTelEmail contato = new ContatoTelEmail(telefone, celular, email);
                 Enfermeiro enfermeiro = new Enfermeiro(idMedico, treinadoOpRaioX, setor, cargaHoraria, nomeCompleto, dataNascimento, endereco, contato, Genero.valueOf(genero));
                 //adicionar as informacoes ao array de enfermeiros
-                TelaPrincipal.arrayEnfermeiros.add(enfermeiro);
+                TelaPrincipalController.arrayEnfermeiros.add(enfermeiro);
             }
             ErrorHandler.exibirMsgInfo("Importação Realizada com Sucesso", "Importar Excel");
             }catch(IOException e){

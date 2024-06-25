@@ -5,7 +5,7 @@
 package com.mycompany.n2_prog3_mateusalmeida.models;
 
 
-import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipal;
+import com.mycompany.n2_prog3_mateusalmeida.TelaPrincipalController;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -113,7 +113,7 @@ public class ConsultaMedica {
         while(consultas.hasNext()){
             ConsultaMedica consulta = consultas.next();
             if(consulta.getIdMedico()== idMedico){
-                Paciente.removerConsultaHistorico(TelaPrincipal.arrayPacientes, consulta);
+                Paciente.removerConsultaHistorico(TelaPrincipalController.arrayPacientes, consulta);
                 consultas.remove();
             }
         }
@@ -139,7 +139,7 @@ public class ConsultaMedica {
 
     @Override
     public String toString() {
-        return idConsulta + " - " + Paciente.findById(TelaPrincipal.arrayPacientes, this.idPaciente).getNomeCompleto();
+        return idConsulta + " - " + Paciente.findById(TelaPrincipalController.arrayPacientes, this.idPaciente).getNomeCompleto();
     }
     
     

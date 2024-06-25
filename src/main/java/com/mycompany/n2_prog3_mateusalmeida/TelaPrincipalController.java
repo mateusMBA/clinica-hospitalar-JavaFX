@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 
-public class TelaPrincipal {
+public class TelaPrincipalController {
     
     //arraylists estaticos que serao utilizados como fonte de dados para o aplicativo, poderao ser acessados em todas o programa
     public static ArrayList<Medico> arrayMedicos = new ArrayList<Medico>();

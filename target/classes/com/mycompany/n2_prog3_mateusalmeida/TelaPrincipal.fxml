@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.n2_prog3_mateusalmeida.TelaPrincipal">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.n2_prog3_mateusalmeida.TelaPrincipalController">
    <children>
       <Pane layoutX="108.0" layoutY="47.0" prefHeight="54.0" prefWidth="444.0">
          <children>
@@ -61,12 +61,11 @@
             <Button layoutX="33.0" layoutY="96.0" mnemonicParsing="false" onAction="#switchToEditarConsulta" prefHeight="30.0" prefWidth="120.0" text="Editar Cadastro" />
          </children>
       </Pane>
-      <Pane layoutX="118.0" layoutY="459.0" prefHeight="214.0" prefWidth="186.0">
+      <Pane layoutX="118.0" layoutY="459.0" prefHeight="170.0" prefWidth="186.0">
          <children>
             <Button layoutX="33.0" layoutY="35.0" mnemonicParsing="false" onAction="#importarExcel" prefHeight="30.0" prefWidth="120.0" text="Excel" />
             <Button layoutX="33.0" layoutY="80.0" mnemonicParsing="false" onAction="#importarXML" prefHeight="30.0" prefWidth="120.0" text="XML" />
             <Button layoutX="33.0" layoutY="125.0" mnemonicParsing="false" onAction="#importarJSON" prefHeight="30.0" prefWidth="120.0" text="JSON" />
-            <Button layoutX="33.0" layoutY="170.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Banco de Dados" />
             <Label layoutX="26.0" layoutY="1.0" text="Importar Dados">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -74,12 +73,11 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="365.0" layoutY="459.0" prefHeight="214.0" prefWidth="186.0">
+      <Pane layoutX="365.0" layoutY="459.0" prefHeight="170.0" prefWidth="186.0">
          <children>
             <Button layoutX="33.0" layoutY="35.0" mnemonicParsing="false" onAction="#exportarExcel" prefHeight="30.0" prefWidth="120.0" text="Excel" />
             <Button layoutX="33.0" layoutY="80.0" mnemonicParsing="false" onAction="#exportarXML" prefHeight="30.0" prefWidth="120.0" text="XML" />
             <Button layoutX="33.0" layoutY="125.0" mnemonicParsing="false" onAction="#exportarJSON" prefHeight="30.0" prefWidth="120.0" text="JSON" />
-            <Button layoutX="33.0" layoutY="170.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Banco de Dados" />
             <Label layoutX="26.0" layoutY="1.0" text="Exportar Dados">
                <font>
                   <Font name="System Bold" size="18.0" />

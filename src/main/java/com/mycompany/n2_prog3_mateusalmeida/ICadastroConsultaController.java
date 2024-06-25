@@ -16,7 +16,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class ICadastroConsulta implements Initializable{
+public class ICadastroConsultaController implements Initializable{
 
     @FXML
     TextField textFieldNomeMedico;
@@ -59,17 +59,17 @@ public class ICadastroConsulta implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         radioBtnSim.setSelected(true);
-        cbMedico.getItems().addAll(TelaPrincipal.arrayMedicos);
-        if(TelaPrincipal.arrayMedicos.size()>0){
-            cbMedico.setValue(TelaPrincipal.arrayMedicos.get(0));
-            Medico medico = TelaPrincipal.arrayMedicos.get(0);
+        cbMedico.getItems().addAll(TelaPrincipalController.arrayMedicos);
+        if(TelaPrincipalController.arrayMedicos.size()>0){
+            cbMedico.setValue(TelaPrincipalController.arrayMedicos.get(0));
+            Medico medico = TelaPrincipalController.arrayMedicos.get(0);
             textFieldNomeMedico.setText(medico.getNomeCompleto());
             textFieldCRM.setText(String.format("%d", medico.getNumeroCRM()));
-        cbPaciente.getItems().addAll(TelaPrincipal.arrayPacientes);
+        cbPaciente.getItems().addAll(TelaPrincipalController.arrayPacientes);
         }
-        if(TelaPrincipal.arrayPacientes.size()>0){
-            cbPaciente.setValue(TelaPrincipal.arrayPacientes.get(0));
-            Paciente paciente = TelaPrincipal.arrayPacientes.get(0);
+        if(TelaPrincipalController.arrayPacientes.size()>0){
+            cbPaciente.setValue(TelaPrincipalController.arrayPacientes.get(0));
+            Paciente paciente = TelaPrincipalController.arrayPacientes.get(0);
             textFieldNomePaciente.setText(paciente.getNomeCompleto());
             textFieldIdade.setText(String.format("%d", paciente.getIdade()));   
         }
@@ -78,8 +78,8 @@ public class ICadastroConsulta implements Initializable{
     @FXML
     private void salvarConsulta() throws IOException {
         try{   
-            long idMedico = (long) TelaPrincipal.arrayMedicos.get(cbMedico.getSelectionModel().getSelectedIndex()).getIdMedico();
-            long idPaciente = (long) TelaPrincipal.arrayPacientes.get(cbPaciente.getSelectionModel().getSelectedIndex()).getIdPaciente();
+            long idMedico = (long) TelaPrincipalController.arrayMedicos.get(cbMedico.getSelectionModel().getSelectedIndex()).getIdMedico();
+            long idPaciente = (long) TelaPrincipalController.arrayPacientes.get(cbPaciente.getSelectionModel().getSelectedIndex()).getIdPaciente();
             String exameQueixa = textFieldQueixa.getText();
             String diagnostico = textAreaDiagnostico.getText();
             String prescricao = textAreaPrescricao.getText();
@@ -89,9 +89,9 @@ public class ICadastroConsulta implements Initializable{
             else
                 indicacaoCirurgia = false;
             ConsultaMedica consulta = new ConsultaMedica(idPaciente, idMedico,exameQueixa, diagnostico, prescricao, indicacaoCirurgia);
-            TelaPrincipal.arrayConsultas.add(consulta);
+            TelaPrincipalController.arrayConsultas.add(consulta);
             //Insere a nova consulta no historico de consultas do paciente
-            Paciente.findById(TelaPrincipal.arrayPacientes, idPaciente).getHistoricoConsultasMedicas().add(consulta);
+            Paciente.findById(TelaPrincipalController.arrayPacientes, idPaciente).getHistoricoConsultasMedicas().add(consulta);
             ErrorHandler.exibirMsgInfo("Consulta cadastrada com sucesso", "Cadastro Consulta");
             limparCampos();
         }catch(NumberFormatException e){
@@ -116,8 +116,8 @@ public class ICadastroConsulta implements Initializable{
         Paciente paciente;
         if(id < 0)
           id = 0;
-        if(TelaPrincipal.arrayPacientes.size()> 0){
-            paciente = (TelaPrincipal.arrayPacientes.get(id));
+        if(TelaPrincipalController.arrayPacientes.size()> 0){
+            paciente = (TelaPrincipalController.arrayPacientes.get(id));
             textFieldNomePaciente.setText(paciente.getNomeCompleto());
             textFieldIdade.setText(String.format("%d",paciente.getIdade()));
         }
@@ -129,8 +129,8 @@ public class ICadastroConsulta implements Initializable{
         Medico medico;
         if(id < 0)
           id = 0;
-        if(TelaPrincipal.arrayMedicos.size()> 0){
-            medico = (TelaPrincipal.arrayMedicos.get(id));
+        if(TelaPrincipalController.arrayMedicos.size()> 0){
+            medico = (TelaPrincipalController.arrayMedicos.get(id));
             textFieldNomeMedico.setText(medico.getNomeCompleto());
             textFieldCRM.setText(String.format("%d",medico.getNumeroCRM()));
         }

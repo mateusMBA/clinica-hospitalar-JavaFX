@@ -29,7 +29,7 @@ import javafx.scene.control.TextField;
  *
  * @author mateu
  */
-public class IVisualizaEnfermeiro implements Initializable{
+public class IVisualizaEnfermeiroController implements Initializable{
     
     @FXML
     TextField textFieldNomeEnfermeiro;
@@ -101,10 +101,10 @@ public class IVisualizaEnfermeiro implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cbEnfermeiro.getItems().addAll(TelaPrincipal.arrayEnfermeiros);
-        if(TelaPrincipal.arrayEnfermeiros.size()>0){
-            cbEnfermeiro.setValue(TelaPrincipal.arrayEnfermeiros.get(0));
-            preencherInformacoes(TelaPrincipal.arrayEnfermeiros.get(0));
+        cbEnfermeiro.getItems().addAll(TelaPrincipalController.arrayEnfermeiros);
+        if(TelaPrincipalController.arrayEnfermeiros.size()>0){
+            cbEnfermeiro.setValue(TelaPrincipalController.arrayEnfermeiros.get(0));
+            preencherInformacoes(TelaPrincipalController.arrayEnfermeiros.get(0));
         }else{
             btnDeletar.setDisable(true);
         }
@@ -201,7 +201,7 @@ public class IVisualizaEnfermeiro implements Initializable{
         enfermeiro.getContato().setTelefone((String) textFieldTelefone.getText());
         enfermeiro.getContato().setEmail((String) textFieldEmail.getText());
         ErrorHandler.exibirMsgInfo("Enfermeiro alterado com sucesso", "Cadastro Enfermeiro");
-        ObservableList<Enfermeiro> enfermeiros = FXCollections.observableArrayList(TelaPrincipal.arrayEnfermeiros);
+        ObservableList<Enfermeiro> enfermeiros = FXCollections.observableArrayList(TelaPrincipalController.arrayEnfermeiros);
         cbEnfermeiro.setItems(enfermeiros);
         btnEditar.setDisable(false);
         btnDeletar.setDisable(false);
@@ -217,7 +217,7 @@ public class IVisualizaEnfermeiro implements Initializable{
     
     @FXML
     private void editarEnfermeiro() throws IOException{
-        if(TelaPrincipal.arrayEnfermeiros.size() > 0){
+        if(TelaPrincipalController.arrayEnfermeiros.size() > 0){
             desbloquearBotoes();
             btnSalvar.setDisable(false);
             btnEditar.setDisable(true);
@@ -231,15 +231,15 @@ public class IVisualizaEnfermeiro implements Initializable{
     @FXML
     private void deletarEnfermeiro() throws IOException{
         //deletar o enfermeiro selecionado da base e preencher o combobox com os remanescentes
-        if(TelaPrincipal.arrayEnfermeiros.size() > 0){
+        if(TelaPrincipalController.arrayEnfermeiros.size() > 0){
             int id = cbEnfermeiro.getSelectionModel().getSelectedIndex();
-            TelaPrincipal.arrayEnfermeiros.remove(id);
+            TelaPrincipalController.arrayEnfermeiros.remove(id);
             ErrorHandler.exibirMsgInfo("Enfermeiro deletado com sucesso", "Cadastro Enfermeiro");
         }
-        if(TelaPrincipal.arrayEnfermeiros.size() != 0){
-            ObservableList<Enfermeiro> enfermeiros = FXCollections.observableArrayList(TelaPrincipal.arrayEnfermeiros);
+        if(TelaPrincipalController.arrayEnfermeiros.size() != 0){
+            ObservableList<Enfermeiro> enfermeiros = FXCollections.observableArrayList(TelaPrincipalController.arrayEnfermeiros);
             cbEnfermeiro.setItems(enfermeiros);
-            cbEnfermeiro.setValue(TelaPrincipal.arrayEnfermeiros.get(0));
+            cbEnfermeiro.setValue(TelaPrincipalController.arrayEnfermeiros.get(0));
         }else{
             limparCampos();
             cbEnfermeiro.setItems(null);
@@ -251,8 +251,8 @@ public class IVisualizaEnfermeiro implements Initializable{
         int id = cbEnfermeiro.getSelectionModel().getSelectedIndex();
         if(id < 0)
           id = 0;
-        if(TelaPrincipal.arrayEnfermeiros.size()> 0){
-            preencherInformacoes(TelaPrincipal.arrayEnfermeiros.get(id));
+        if(TelaPrincipalController.arrayEnfermeiros.size()> 0){
+            preencherInformacoes(TelaPrincipalController.arrayEnfermeiros.get(id));
         }
         else{
             btnDeletar.setDisable(true);

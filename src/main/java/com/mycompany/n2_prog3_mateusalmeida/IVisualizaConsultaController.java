@@ -27,7 +27,7 @@ import javafx.scene.control.TextField;
  *
  * @author mateu
  */
-public class IVisualizaConsulta implements Initializable{
+public class IVisualizaConsultaController implements Initializable{
     
     @FXML
     TextField textFieldNomeMedico;
@@ -81,16 +81,16 @@ public class IVisualizaConsulta implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cbConsulta.getItems().addAll(TelaPrincipal.arrayConsultas);
-        cbMedico.getItems().addAll(TelaPrincipal.arrayMedicos);
-        cbPaciente.getItems().addAll(TelaPrincipal.arrayPacientes);
-        if(TelaPrincipal.arrayConsultas.size()>0){
-            cbConsulta.setValue(TelaPrincipal.arrayConsultas.get(0));
-            preencherInformacoes(TelaPrincipal.arrayConsultas.get(0));
-            Paciente paciente = TelaPrincipal.arrayPacientes.get(cbPaciente.getSelectionModel().getSelectedIndex());
+        cbConsulta.getItems().addAll(TelaPrincipalController.arrayConsultas);
+        cbMedico.getItems().addAll(TelaPrincipalController.arrayMedicos);
+        cbPaciente.getItems().addAll(TelaPrincipalController.arrayPacientes);
+        if(TelaPrincipalController.arrayConsultas.size()>0){
+            cbConsulta.setValue(TelaPrincipalController.arrayConsultas.get(0));
+            preencherInformacoes(TelaPrincipalController.arrayConsultas.get(0));
+            Paciente paciente = TelaPrincipalController.arrayPacientes.get(cbPaciente.getSelectionModel().getSelectedIndex());
             textFieldNomePaciente.setText(paciente.getNomeCompleto());
             textFieldIdade.setText(String.format("%d", paciente.getIdade()));
-            Medico medico = TelaPrincipal.arrayMedicos.get(cbMedico.getSelectionModel().getSelectedIndex());
+            Medico medico = TelaPrincipalController.arrayMedicos.get(cbMedico.getSelectionModel().getSelectedIndex());
             textFieldNomeMedico.setText(medico.getNomeCompleto());
             textFieldCRM.setText(String.format("%d", medico.getNumeroCRM()));
         }else{
@@ -119,8 +119,8 @@ public class IVisualizaConsulta implements Initializable{
        //alterar a consulta no array estatico com os valores preenchidos nos campos
         try{
             int id = cbConsulta.getSelectionModel().getSelectedIndex();
-            ConsultaMedica consulta = TelaPrincipal.arrayConsultas.get(id);
-            long idPacienteAntigo = TelaPrincipal.arrayConsultas.get(id).getIdPaciente();
+            ConsultaMedica consulta = TelaPrincipalController.arrayConsultas.get(id);
+            long idPacienteAntigo = TelaPrincipalController.arrayConsultas.get(id).getIdPaciente();
             consulta.setExameQueixa(textFieldQueixa.getText());
             consulta.setPrescricao(textAreaPrescricao.getText());
             consulta.setDiagnostico(textAreaDiagnostico.getText());
@@ -128,13 +128,13 @@ public class IVisualizaConsulta implements Initializable{
                 consulta.setIndicacaoCirurgica(true);
             else
                consulta.setIndicacaoCirurgica(false);
-            long idMedico = TelaPrincipal.arrayMedicos.get(cbMedico.getSelectionModel().getSelectedIndex()).getIdMedico();
-            long idPaciente = TelaPrincipal.arrayPacientes.get(cbPaciente.getSelectionModel().getSelectedIndex()).getIdPaciente();
+            long idMedico = TelaPrincipalController.arrayMedicos.get(cbMedico.getSelectionModel().getSelectedIndex()).getIdMedico();
+            long idPaciente = TelaPrincipalController.arrayPacientes.get(cbPaciente.getSelectionModel().getSelectedIndex()).getIdPaciente();
             consulta.setIdMedico(idMedico);
             consulta.setIdPaciente(idPaciente);
             if(idPaciente != idPacienteAntigo){
-                Paciente.findById(TelaPrincipal.arrayPacientes, idPaciente).getHistoricoConsultasMedicas().add(consulta);
-                Paciente.findById(TelaPrincipal.arrayPacientes, idPacienteAntigo).removerConsultaHistorico(consulta);
+                Paciente.findById(TelaPrincipalController.arrayPacientes, idPaciente).getHistoricoConsultasMedicas().add(consulta);
+                Paciente.findById(TelaPrincipalController.arrayPacientes, idPacienteAntigo).removerConsultaHistorico(consulta);
             }
 
             btnEditar.setDisable(false);
@@ -155,17 +155,17 @@ public class IVisualizaConsulta implements Initializable{
     private void deletarConsulta() throws IOException {                                               
         int id = 1;
         //caso existam itens no array de consultas, exclui o item selecionado
-        if(TelaPrincipal.arrayConsultas.size() > 0){
+        if(TelaPrincipalController.arrayConsultas.size() > 0){
             id = cbConsulta.getSelectionModel().getSelectedIndex();
-            long idPaciente = (long) TelaPrincipal.arrayPacientes.get(cbPaciente.getSelectionModel().getSelectedIndex()).getIdPaciente();
-            ConsultaMedica consulta = TelaPrincipal.arrayConsultas.get(id);
+            long idPaciente = (long) TelaPrincipalController.arrayPacientes.get(cbPaciente.getSelectionModel().getSelectedIndex()).getIdPaciente();
+            ConsultaMedica consulta = TelaPrincipalController.arrayConsultas.get(id);
             //busca o paciente atraves do id e realiza a exclusao da consulta em seu historico
-            Paciente.findById(TelaPrincipal.arrayPacientes, idPaciente).removerConsultaHistorico(consulta);
-            TelaPrincipal.arrayConsultas.remove(id);
-            if(TelaPrincipal.arrayConsultas.size() > 0){
-                ObservableList<ConsultaMedica> consultas = FXCollections.observableArrayList(TelaPrincipal.arrayConsultas);
+            Paciente.findById(TelaPrincipalController.arrayPacientes, idPaciente).removerConsultaHistorico(consulta);
+            TelaPrincipalController.arrayConsultas.remove(id);
+            if(TelaPrincipalController.arrayConsultas.size() > 0){
+                ObservableList<ConsultaMedica> consultas = FXCollections.observableArrayList(TelaPrincipalController.arrayConsultas);
                 cbConsulta.setItems(consultas);
-                cbConsulta.setValue(TelaPrincipal.arrayConsultas.get(0));
+                cbConsulta.setValue(TelaPrincipalController.arrayConsultas.get(0));
                 ErrorHandler.exibirMsgInfo("Consulta deletada com sucesso", "Cadastro Consulta");
             }else{
                 cbConsulta.setItems(null);
@@ -178,7 +178,7 @@ public class IVisualizaConsulta implements Initializable{
     @FXML
     private void editarConsulta() throws IOException {                                              
         //Ao clicar em Editar, habilitar todos os campos e o botao de salvar, desabilitar deletar.
-        if(TelaPrincipal.arrayConsultas.size() > 0){
+        if(TelaPrincipalController.arrayConsultas.size() > 0){
             desbloquearBotoes();
             btnSalvar.setDisable(false);
             btnDeletar.setDisable(true);
@@ -218,8 +218,8 @@ public class IVisualizaConsulta implements Initializable{
         int id = cbConsulta.getSelectionModel().getSelectedIndex();
         if(id < 0)
           id = 0;
-        if(TelaPrincipal.arrayConsultas.size()> 0){
-            preencherInformacoes(TelaPrincipal.arrayConsultas.get(id));
+        if(TelaPrincipalController.arrayConsultas.size()> 0){
+            preencherInformacoes(TelaPrincipalController.arrayConsultas.get(id));
         }
         else{
             btnDeletar.setDisable(true);
@@ -232,8 +232,8 @@ public class IVisualizaConsulta implements Initializable{
         int id = cbMedico.getSelectionModel().getSelectedIndex();
         if(id < 0)
           id = 0;
-        if(TelaPrincipal.arrayMedicos.size() > 0){
-            Medico medico = TelaPrincipal.arrayMedicos.get(id);
+        if(TelaPrincipalController.arrayMedicos.size() > 0){
+            Medico medico = TelaPrincipalController.arrayMedicos.get(id);
             textFieldNomeMedico.setText(medico.getNomeCompleto());
             textFieldCRM.setText(String.format("%d", medico.getNumeroCRM()));
         }
@@ -245,16 +245,16 @@ public class IVisualizaConsulta implements Initializable{
         int id = cbPaciente.getSelectionModel().getSelectedIndex();
         if(id < 0)
           id = 0;
-        if(TelaPrincipal.arrayPacientes.size() > 0){
-            Paciente paciente = TelaPrincipal.arrayPacientes.get(id);
+        if(TelaPrincipalController.arrayPacientes.size() > 0){
+            Paciente paciente = TelaPrincipalController.arrayPacientes.get(id);
             textFieldNomePaciente.setText(paciente.getNomeCompleto());
             textFieldIdade.setText(String.format("%d", paciente.getIdade()));
         }
     }
     
     private void preencherInformacoes(ConsultaMedica consultaMedica){
-        cbMedico.setValue(Medico.findById(TelaPrincipal.arrayMedicos, consultaMedica.getIdMedico()));
-        cbPaciente.setValue(Paciente.findById(TelaPrincipal.arrayPacientes, consultaMedica.getIdPaciente()));
+        cbMedico.setValue(Medico.findById(TelaPrincipalController.arrayMedicos, consultaMedica.getIdMedico()));
+        cbPaciente.setValue(Paciente.findById(TelaPrincipalController.arrayPacientes, consultaMedica.getIdPaciente()));
         textFieldQueixa.setText(consultaMedica.getExameQueixa());
         textAreaDiagnostico.setText(consultaMedica.getDiagnostico());
         textAreaPrescricao.setText(consultaMedica.getPrescricao());

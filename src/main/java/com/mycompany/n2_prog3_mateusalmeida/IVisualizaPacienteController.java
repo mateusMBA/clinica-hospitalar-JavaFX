@@ -33,7 +33,7 @@ import javafx.scene.control.TextField;
  *
  * @author mateu
  */
-public class IVisualizaPaciente implements Initializable{
+public class IVisualizaPacienteController implements Initializable{
     
     public static int idPaciente;
     
@@ -120,15 +120,15 @@ public class IVisualizaPaciente implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cbPaciente.getItems().addAll(TelaPrincipal.arrayPacientes);
-        if(TelaPrincipal.arrayPacientes.size()>0){
-            cbPaciente.setValue(TelaPrincipal.arrayPacientes.get(0));
+        cbPaciente.getItems().addAll(TelaPrincipalController.arrayPacientes);
+        if(TelaPrincipalController.arrayPacientes.size()>0){
+            cbPaciente.setValue(TelaPrincipalController.arrayPacientes.get(0));
             this.idPaciente = cbPaciente.getSelectionModel().getSelectedIndex();
-            preencherInformacoes(TelaPrincipal.arrayPacientes.get(0));
-            cbResponsavel.getItems().addAll(TelaPrincipal.arrayPacientes.get(0).getContatoResponsavel());
-            if(TelaPrincipal.arrayPacientes.get(0).getContatoResponsavel().size() > 0){
-            cbResponsavel.setValue(TelaPrincipal.arrayPacientes.get(0).getContatoResponsavel().get(0));
-            preencherResponsavel(TelaPrincipal.arrayPacientes.get(0).getContatoResponsavel().get(0));
+            preencherInformacoes(TelaPrincipalController.arrayPacientes.get(0));
+            cbResponsavel.getItems().addAll(TelaPrincipalController.arrayPacientes.get(0).getContatoResponsavel());
+            if(TelaPrincipalController.arrayPacientes.get(0).getContatoResponsavel().size() > 0){
+            cbResponsavel.setValue(TelaPrincipalController.arrayPacientes.get(0).getContatoResponsavel().get(0));
+            preencherResponsavel(TelaPrincipalController.arrayPacientes.get(0).getContatoResponsavel().get(0));
             }
         }else{
             btnDeletar.setDisable(true);
@@ -253,7 +253,7 @@ public class IVisualizaPaciente implements Initializable{
     private void salvarInformacoes() throws IOException{
        //editar o paciente no array estaticos com os valores preenchidos nos campos
         int id = cbPaciente.getSelectionModel().getSelectedIndex();
-        Paciente paciente = TelaPrincipal.arrayPacientes.get(id);
+        Paciente paciente = TelaPrincipalController.arrayPacientes.get(id);
         try{
             paciente.setNomeCompleto((String)textFieldNomePaciente.getText());
             paciente.setDataNascimento(Date.from(this.dataNascimento.getValue().atStartOfDay().toInstant(ZoneOffset.UTC)));
@@ -287,7 +287,7 @@ public class IVisualizaPaciente implements Initializable{
     
     @FXML
     private void editarInformacoes() throws IOException{
-        if(TelaPrincipal.arrayPacientes.size() > 0){
+        if(TelaPrincipalController.arrayPacientes.size() > 0){
             desbloquearBotoes();
             btnSalvar.setDisable(false);
             btnEditar.setDisable(true);
@@ -301,18 +301,18 @@ public class IVisualizaPaciente implements Initializable{
     @FXML
     private void deletarInformacoes() throws IOException{
         //deletar o paciente selecionado da base e preencher o combobox com os remanescentes
-        if(TelaPrincipal.arrayPacientes.size() > 0){
+        if(TelaPrincipalController.arrayPacientes.size() > 0){
             int id = cbPaciente.getSelectionModel().getSelectedIndex();
-            long idPaciente = TelaPrincipal.arrayPacientes.get(id).getIdPaciente();
+            long idPaciente = TelaPrincipalController.arrayPacientes.get(id).getIdPaciente();
             //apagar consultas do array estatico de consulta que tiverem o paciente deletado
-            ConsultaMedica.removerConsultaPorIdPaciente(TelaPrincipal.arrayConsultas, idPaciente);
-            TelaPrincipal.arrayPacientes.remove(id);
+            ConsultaMedica.removerConsultaPorIdPaciente(TelaPrincipalController.arrayConsultas, idPaciente);
+            TelaPrincipalController.arrayPacientes.remove(id);
             ErrorHandler.exibirMsgInfo("Paciente deletado com sucesso", "Cadastro Paciente");
         }
-        if(TelaPrincipal.arrayPacientes.size() != 0){
-            ObservableList<Paciente> pacientes = FXCollections.observableArrayList(TelaPrincipal.arrayPacientes);
+        if(TelaPrincipalController.arrayPacientes.size() != 0){
+            ObservableList<Paciente> pacientes = FXCollections.observableArrayList(TelaPrincipalController.arrayPacientes);
             cbPaciente.setItems(pacientes);
-            cbPaciente.setValue(TelaPrincipal.arrayPacientes.get(0));
+            cbPaciente.setValue(TelaPrincipalController.arrayPacientes.get(0));
         }else{
             limparCampos();
             cbPaciente.setItems(null);
@@ -325,14 +325,14 @@ public class IVisualizaPaciente implements Initializable{
         if(id < 0)
           id = 0;
         this.idPaciente = id;
-        if(TelaPrincipal.arrayPacientes.size()> 0){
-            preencherInformacoes(TelaPrincipal.arrayPacientes.get(id));
-            ObservableList<Responsavel> responsaveis = FXCollections.observableArrayList(TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel());
+        if(TelaPrincipalController.arrayPacientes.size()> 0){
+            preencherInformacoes(TelaPrincipalController.arrayPacientes.get(id));
+            ObservableList<Responsavel> responsaveis = FXCollections.observableArrayList(TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel());
             cbResponsavel.setItems(responsaveis);
-            cbResponsavel.setValue(TelaPrincipal.arrayPacientes.get(id ).getContatoResponsavel().get(0));
-            if(TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel().size() > 0){
+            cbResponsavel.setValue(TelaPrincipalController.arrayPacientes.get(id ).getContatoResponsavel().get(0));
+            if(TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel().size() > 0){
                 int idResponsavel = 0;
-                preencherResponsavel(TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel));
+                preencherResponsavel(TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel));
             }
         }
         else{
@@ -345,11 +345,11 @@ public class IVisualizaPaciente implements Initializable{
     private void onChangeChoiceBoxResponsavel() throws IOException{
         int id = cbPaciente.getSelectionModel().getSelectedIndex();
         if(id >=0){
-            if(TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel().size() > 0){
+            if(TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel().size() > 0){
                 int idResponsavel = cbResponsavel.getSelectionModel().getSelectedIndex();
                 if(idResponsavel < 0)
                     idResponsavel = 0;
-                preencherResponsavel(TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel));
+                preencherResponsavel(TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel));
                 }else{
                 textFieldRespNome.setText("");
                 textFieldRespCelular.setText("");
@@ -365,13 +365,13 @@ public class IVisualizaPaciente implements Initializable{
         //alterar responsavel selecionado no arraylist de contatoResponsavel do paciente selecionado
         int id = cbPaciente.getSelectionModel().getSelectedIndex();
         int idResponsavel = cbResponsavel.getSelectionModel().getSelectedIndex();
-        TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel).setCelular(textFieldRespCelular.getText());
-        TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel).setTelefone(textFieldRespCelular.getText());
-        TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel).setEmail(textFieldRespEmail.getText());
-        TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel).setNomeResponsavel(textFieldRespNome.getText());
-        ObservableList<Responsavel> responsaveis = FXCollections.observableArrayList(TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel());
+        TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel).setCelular(textFieldRespCelular.getText());
+        TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel).setTelefone(textFieldRespCelular.getText());
+        TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel).setEmail(textFieldRespEmail.getText());
+        TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel().get(idResponsavel).setNomeResponsavel(textFieldRespNome.getText());
+        ObservableList<Responsavel> responsaveis = FXCollections.observableArrayList(TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel());
         cbResponsavel.setItems(responsaveis);
-        cbResponsavel.setValue(TelaPrincipal.arrayPacientes.get(id ).getContatoResponsavel().get(idResponsavel));
+        cbResponsavel.setValue(TelaPrincipalController.arrayPacientes.get(id ).getContatoResponsavel().get(idResponsavel));
     }
     
     @FXML
@@ -385,10 +385,10 @@ public class IVisualizaPaciente implements Initializable{
         String emailResp = textFieldRespEmail.getText();
         int idResponsavel = cbResponsavel.getSelectionModel().getSelectedIndex();
         Responsavel responsavel = new Responsavel(nomeResp,telefoneResp,celularResp,emailResp);
-        TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel().add(responsavel);      
-        ObservableList<Responsavel> responsaveis = FXCollections.observableArrayList(TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel());
+        TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel().add(responsavel);      
+        ObservableList<Responsavel> responsaveis = FXCollections.observableArrayList(TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel());
         cbResponsavel.setItems(responsaveis);
-        cbResponsavel.setValue(TelaPrincipal.arrayPacientes.get(id ).getContatoResponsavel().get(idResponsavel));
+        cbResponsavel.setValue(TelaPrincipalController.arrayPacientes.get(id ).getContatoResponsavel().get(idResponsavel));
         btnDeletar.setDisable(false);
     }                                                  
        
@@ -397,12 +397,12 @@ public class IVisualizaPaciente implements Initializable{
         //deletar responsavel selecionado no arraylist de contatoResponsavel do paciente selecionado
         int id = cbPaciente.getSelectionModel().getSelectedIndex();
         int idResponsavel = cbResponsavel.getSelectionModel().getSelectedIndex();
-        TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel().remove(idResponsavel);
+        TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel().remove(idResponsavel);
         //preencher combobox de contato responsavel com todos os valores do arraylist
-        ObservableList<Responsavel> responsaveis = FXCollections.observableArrayList(TelaPrincipal.arrayPacientes.get(id).getContatoResponsavel());
+        ObservableList<Responsavel> responsaveis = FXCollections.observableArrayList(TelaPrincipalController.arrayPacientes.get(id).getContatoResponsavel());
         cbResponsavel.setItems(responsaveis);
         if(responsaveis.size() > 0)
-            cbResponsavel.setValue(TelaPrincipal.arrayPacientes.get(id ).getContatoResponsavel().get(0));
+            cbResponsavel.setValue(TelaPrincipalController.arrayPacientes.get(id ).getContatoResponsavel().get(0));
         else
             btnRespDeletar.setDisable(true);
         

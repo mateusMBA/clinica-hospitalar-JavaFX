@@ -26,7 +26,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author mateu
  */
-public class IVisualizaHistoricoConsulta implements Initializable{
+public class IVisualizaHistoricoConsultaController implements Initializable{
     
     public static class MyDataModel {
         private final SimpleStringProperty property1;
@@ -132,10 +132,10 @@ public class IVisualizaHistoricoConsulta implements Initializable{
         
         ArrayList<MyDataModel> dataArray = new ArrayList<>();
         
-        if(TelaPrincipal.arrayConsultas.size() > 0 && IVisualizaPaciente.idPaciente >= 0){
-            for(ConsultaMedica consulta : TelaPrincipal.arrayPacientes.get(IVisualizaPaciente.idPaciente).getHistoricoConsultasMedicas()){
-                String nomePaciente = Paciente.findById(TelaPrincipal.arrayPacientes, consulta.getIdPaciente()).getNomeCompleto();
-                String nomeMedico = Medico.findById(TelaPrincipal.arrayMedicos, consulta.getIdMedico()).getNomeCompleto();
+        if(TelaPrincipalController.arrayConsultas.size() > 0 && IVisualizaPacienteController.idPaciente >= 0){
+            for(ConsultaMedica consulta : TelaPrincipalController.arrayPacientes.get(IVisualizaPacienteController.idPaciente).getHistoricoConsultasMedicas()){
+                String nomePaciente = Paciente.findById(TelaPrincipalController.arrayPacientes, consulta.getIdPaciente()).getNomeCompleto();
+                String nomeMedico = Medico.findById(TelaPrincipalController.arrayMedicos, consulta.getIdMedico()).getNomeCompleto();
                 dataArray.add(new MyDataModel(nomePaciente, nomeMedico, consulta.getExameQueixa(), consulta.getDiagnostico(), consulta.getPrescricao(), String.valueOf(consulta.isIndicacaoCirurgica())));
             }
         ObservableList<MyDataModel> dataList = FXCollections.observableArrayList(dataArray);

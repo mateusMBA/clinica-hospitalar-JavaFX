@@ -34,7 +34,7 @@ import javafx.scene.control.TextField;
  *
  * @author mateu
  */
-public class IVisualizaMedico implements Initializable{
+public class IVisualizaMedicoController implements Initializable{
     
     @FXML
     TextField textFieldNomeMedico;
@@ -145,10 +145,10 @@ public class IVisualizaMedico implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cbMedico.getItems().addAll(TelaPrincipal.arrayMedicos);
-        if(TelaPrincipal.arrayMedicos.size()>0){
-            cbMedico.setValue(TelaPrincipal.arrayMedicos.get(0));
-            preencherInformacoes(TelaPrincipal.arrayMedicos.get(0));
+        cbMedico.getItems().addAll(TelaPrincipalController.arrayMedicos);
+        if(TelaPrincipalController.arrayMedicos.size()>0){
+            cbMedico.setValue(TelaPrincipalController.arrayMedicos.get(0));
+            preencherInformacoes(TelaPrincipalController.arrayMedicos.get(0));
         }else{
             btnDeletar.setDisable(true);
         }
@@ -310,7 +310,7 @@ public class IVisualizaMedico implements Initializable{
        medico.getContato().setCelular((String) textFieldCelular.getText());
        medico.getContato().setTelefone((String) textFieldTelefone.getText());
        medico.getContato().setEmail((String) textFieldEmail.getText());
-       ObservableList<Medico> medicos = FXCollections.observableArrayList(TelaPrincipal.arrayMedicos);
+       ObservableList<Medico> medicos = FXCollections.observableArrayList(TelaPrincipalController.arrayMedicos);
        cbMedico.setItems(medicos);
        ErrorHandler.exibirMsgInfo("Médico alterado com sucesso", "Cadastro Médico");
        btnEditar.setDisable(false);
@@ -327,7 +327,7 @@ public class IVisualizaMedico implements Initializable{
     
     @FXML
     private void editarMedico() throws IOException{
-        if(TelaPrincipal.arrayMedicos.size() > 0){
+        if(TelaPrincipalController.arrayMedicos.size() > 0){
             desbloquearBotoes();
             btnSalvar.setDisable(false);
             btnEditar.setDisable(true);
@@ -341,17 +341,17 @@ public class IVisualizaMedico implements Initializable{
     @FXML
     private void deletarMedico() throws IOException{
         //deletar o medico selecionado da base e preencher o combobox com os remanescentes
-        if(TelaPrincipal.arrayMedicos.size() > 0){
+        if(TelaPrincipalController.arrayMedicos.size() > 0){
             int id = cbMedico.getSelectionModel().getSelectedIndex();
-            long idMedico = TelaPrincipal.arrayMedicos.get(id).getIdMedico();
-            TelaPrincipal.arrayMedicos.remove(id);
-            ConsultaMedica.removerConsultaPorIdMedico(TelaPrincipal.arrayConsultas, idMedico);
+            long idMedico = TelaPrincipalController.arrayMedicos.get(id).getIdMedico();
+            TelaPrincipalController.arrayMedicos.remove(id);
+            ConsultaMedica.removerConsultaPorIdMedico(TelaPrincipalController.arrayConsultas, idMedico);
             ErrorHandler.exibirMsgInfo("Medico deletado com sucesso", "Cadastro Médico");
         }
-        if(TelaPrincipal.arrayMedicos.size() != 0){
-            ObservableList<Medico> medicos = FXCollections.observableArrayList(TelaPrincipal.arrayMedicos);
+        if(TelaPrincipalController.arrayMedicos.size() != 0){
+            ObservableList<Medico> medicos = FXCollections.observableArrayList(TelaPrincipalController.arrayMedicos);
             cbMedico.setItems(medicos);
-            cbMedico.setValue(TelaPrincipal.arrayMedicos.get(0));
+            cbMedico.setValue(TelaPrincipalController.arrayMedicos.get(0));
         }else{
             limparCampos();
             cbMedico.setItems(null);
@@ -363,8 +363,8 @@ public class IVisualizaMedico implements Initializable{
         int id = cbMedico.getSelectionModel().getSelectedIndex();
         if(id < 0)
           id = 0;
-        if(TelaPrincipal.arrayMedicos.size()> 0){
-            preencherInformacoes(TelaPrincipal.arrayMedicos.get(id));
+        if(TelaPrincipalController.arrayMedicos.size()> 0){
+            preencherInformacoes(TelaPrincipalController.arrayMedicos.get(id));
         }
         else{
             btnDeletar.setDisable(true);
